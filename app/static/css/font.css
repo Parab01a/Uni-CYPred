@@ -1,0 +1,10 @@
+@font-face {
+    font-family: MyFont;
+    src: url(ProximaSoft-Medium.woff)
+}
+
+@font-face {
+    font-family: MyFont;
+    src: url(ProximaSoft-SemiBold.woff);
+    font-weight: bold;
+}

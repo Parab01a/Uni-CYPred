@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="static/images/ecust_logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="static/css/font.css" type="text/css">
+    <link rel="stylesheet" href="static/css/navbar.css" type="text/css">
+    <link rel="stylesheet" href="static/css/body.css" type="text/css">
+    <title>PredCyp-{{title}}</title>
+</head>
+<body>
+<div class="navbar">
+    <a href="{{ url_for('index') }}" class="home">PredCyp</a>
+    <ul>
+        <li><a href="{{ url_for('index') }}">Predict</a></li>
+        <li><a href="{{ url_for('index') }}">Results</a></li>
+        <li><a href="{{ url_for('index') }}">Contact</a></li>
+    </ul>
+</div>
+{% block content %}
+{% endblock %}
+</body>
+</html>
