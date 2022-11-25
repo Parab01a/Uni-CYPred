@@ -9,14 +9,21 @@
     <title>PredCyp-{{title}}</title>
 </head>
 <body>
-<div class="navbar">
-    <a href="{{ url_for('index') }}" class="home">PredCyp</a>
+<header>
+    <a href="{{ url_for('index') }}" class="logo">PredCyp</a>
     <ul>
         <li><a href="{{ url_for('index') }}">Predict</a></li>
         <li><a href="{{ url_for('index') }}">Results</a></li>
         <li><a href="{{ url_for('index') }}">Contact</a></li>
     </ul>
-</div>
+</header>
+<section class="banner"></section>
+<script type="text/javascript">
+    window.addEventListener("scroll", function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    })
+</script>
 {% block content %}
 {% endblock %}
 </body>
