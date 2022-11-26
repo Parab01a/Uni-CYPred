@@ -24,7 +24,9 @@ header {
     align-items: center;
     transition: 0.6s;
     padding: 25px 10%;
-    box-shadow: 0 3px 5px darkgray;
+    box-shadow: 0 5px 8px darkgray;
+    /*box-shadow: 0 3px 5px darkgray;*/
+    border-radius: 0 0 90px 90px;
     z-index: 10000;
 }
 
@@ -65,15 +67,15 @@ header ul li a {
     font-weight: bold;
     font-size: 18px;
     transition: 0.2s;
-    display: inline-block;
+    display: inline-block;   /* add underline */
 }
 
 header ul li a:hover, a:active {
     /*color: #cc6699;*/
     color: rgb(0, 96, 85);
     /*text-decoration: underline;*/
-    padding-bottom: 8px;
-    border-bottom: 2px solid;
+    padding-bottom: 8px;   /* add underline */
+    border-bottom: 2px solid;   /* add underline */
 }
 
 header a.logo:hover, a.logo:active {
@@ -87,4 +89,3 @@ header.sticky .logo, ul li a {
     color: #009973;
     /*color: rgb(66, 170, 145);*/
 }
-

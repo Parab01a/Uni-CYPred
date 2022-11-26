@@ -12,9 +12,9 @@ def index():
 
 @app.route('/predict')
 def predict():
-    pass
+    return render_template('predict.html', title='Predict')
 
 
 @app.route('/contact')
 def contact():
-    pass
+    return render_template('contact.html', title='Contact')

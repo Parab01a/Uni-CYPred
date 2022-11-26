@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 
 {% block content%}
-<h1>Predict,{{ user.username }}</h1>
+    <script type="text/javascript" src="static/jsme/jsme.nocache.js"></script>
+    <script>
+        function jsmeOnLoad() {
+            jsmeApplet = new JSApplet.JSME("jsme_container", "400px", "400px", {"options" : "newlook, marker"})
+        }
+    </script>
+    <div id="jsme_container"></div>
+    <button type="button" onclick="alert(jsmeApplet.smiles())">Show SMILES</button>
 {% endblock %}

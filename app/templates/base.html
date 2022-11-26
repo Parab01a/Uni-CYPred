@@ -12,18 +12,14 @@
 <header>
     <a href="{{ url_for('index') }}" class="logo">PredCyp</a>
     <ul>
-        <li><a href="{{ url_for('index') }}">Predict</a></li>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('predict') }}">Predict</a></li>
         <li><a href="{{ url_for('index') }}">Results</a></li>
-        <li><a href="{{ url_for('index') }}">Contact</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
     </ul>
 </header>
 <section class="banner"></section>
-<script type="text/javascript">
-    window.addEventListener("scroll", function(){
-        var header = document.querySelector("header");
-        header.classList.toggle("sticky", window.scrollY > 0);
-    })
-</script>
+<script src="static/js/banner.js"></script>
 {% block content %}
 {% endblock %}
 </body>
