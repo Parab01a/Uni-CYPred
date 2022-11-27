@@ -18,6 +18,8 @@ header {
     position: sticky;   /* !!!!! */
     top: 0;
     left: 0;
+    bottom: 0;
+    right: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -32,10 +34,10 @@ header {
 
 header.sticky {
     padding: 10px 10%;
-    background-color: rgba(204, 204, 204, 0.6);
+    background-color: rgba(221, 221, 221, 1);
 }
 
-header .logo {
+.logo {
     position: relative;
     font-weight: bold;
     color: #009973;
@@ -46,19 +48,19 @@ header .logo {
     transition: 0.3s;
 }
 
-header ul {
+.navbar {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-header ul li {
+.navbar_list {
     position: relative;
     list-style-type: none;
 }
 
-header ul li a {
+.navbar_button {
     position: relative;
     margin: 0 25px;
     text-decoration: none;
@@ -70,22 +72,32 @@ header ul li a {
     display: inline-block;   /* add underline */
 }
 
-header ul li a:hover, a:active {
-    /*color: #cc6699;*/
+/*header ul li a:hover, a:active {*/
+/*    !*color: #cc6699;*!*/
+/*    color: rgb(0, 96, 85);*/
+/*    !*text-decoration: underline;*!*/
+/*    padding-bottom: 8px;   !* add underline *!*/
+/*    border-bottom: 2px solid;   !* add underline *!*/
+/*}*/
+
+.navbar_button:hover, .navbar_button:active {
     color: rgb(0, 96, 85);
-    /*text-decoration: underline;*/
     padding-bottom: 8px;   /* add underline */
     border-bottom: 2px solid;   /* add underline */
 }
 
-header a.logo:hover, a.logo:active {
+.logo:hover, .logo:active {
     color: rgb(0, 96, 85);
     /*text-decoration: none;*/
-    padding-bottom: 0;
-    border-bottom: none;
+    /*padding-bottom: 0;*/
+    /*border-bottom: none;*/
 }
 
-header.sticky .logo, ul li a {
+header.sticky .logo, .navbar_button {
     color: #009973;
     /*color: rgb(66, 170, 145);*/
+}
+
+header.sticky .logo:hover, .logo:active {
+    color: rgb(0, 96, 85);
 }

@@ -6,21 +6,46 @@
     <link rel="stylesheet" href="static/css/font.css" type="text/css">
     <link rel="stylesheet" href="static/css/navbar.css" type="text/css">
     <link rel="stylesheet" href="static/css/body.css" type="text/css">
+    <link rel="stylesheet" href="static/css/footer.css" type="text/css">
     <title>PredCyp-{{title}}</title>
 </head>
 <body>
-<header>
-    <a href="{{ url_for('index') }}" class="logo">PredCyp</a>
-    <ul>
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('predict') }}">Predict</a></li>
-        <li><a href="{{ url_for('index') }}">Results</a></li>
-        <li><a href="{{ url_for('contact') }}">Contact</a></li>
-    </ul>
-</header>
-<section class="banner"></section>
-<script src="static/js/banner.js"></script>
-{% block content %}
-{% endblock %}
+    <header>
+        <a href="{{ url_for('index') }}" class="logo">PredCyp</a>
+        <ul class="navbar">
+            <li class="navbar_list"><a href="{{ url_for('index') }}" class="navbar_button">Home</a></li>
+            <li class="navbar_list"><a href="{{ url_for('predict') }}" class="navbar_button">Predict</a></li>
+            <li class="navbar_list"><a href="{{ url_for('index') }}" class="navbar_button">Results</a></li>
+            <li class="navbar_list"><a href="{{ url_for('contact') }}" class="navbar_button">Contact</a></li>
+        </ul>
+    </header>
+
+    <section class="banner"></section>
+    <script src="static/js/banner.js"></script>
+
+    {% block content %}
+    {% endblock %}
+
+    <main class="content">
+        <p>Content</p>
+    </main>
+
+    <footer>
+        <div class="school_images">
+        <a href="https://www.ecust.edu.cn/" target="_blank" rel="noopener noreferrer">
+            <img src="static/images/ecust_logo.png" alt="ecust_logo" loading="lazy" class="school"></a>
+        <a href="https://pharmacy.ecust.edu.cn/" target="_blank" rel="noopener noreferrer">
+            <img src="static/images/pharmacy_logo.png" alt="pharmacy_logo" loading="lazy" class="school"></a>
+        <a href="http://lmmd.ecust.edu.cn/" target="_blank" rel="noopener noreferrer">
+            <img src="static/images/lmmd_logo.png" alt="lmmd_logo" loading="lazy" class="school"></a>
+        </div>
+
+        <a href="https://flask.palletsprojects.com/en/2.2.x/" target="_blank" rel="noopener noreferrer">
+            <img src="static/images/flask_logo.png" alt="flask_logo" loading="lazy" class="flask"></a>
+        <p>Copyright &copy 2023&nbsp<a href="http://lmmd.ecust.edu.cn/" target="_blank" rel="noopener noreferrer" class="school_links">
+            Laboratory of Molecular Modeling and Design</a>,<a href="https://pharmacy.ecust.edu.cn/" target="_blank" rel="noopener noreferrer" class="school_links">
+            School of Pharmacy</a>,<a href="https://www.ecust.edu.cn/" target="_blank" rel="noopener noreferrer" class="school_links">
+            East China University of Science and Technology</a>.</p>
+    </footer>
 </body>
 </html>

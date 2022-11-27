@@ -1,0 +1,59 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+footer {
+    /*background-color: rgba(204, 204, 204, 0.2);*/
+    background-color: rgba(221, 221, 221, 1);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    /*padding: 100px 50%;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+
+.school {
+    width: 120px;
+    height: 120px;
+    margin: 10px 10px 0 10px;
+}
+
+.flask {
+    width: 80px;
+    height: 30px;
+    margin: 0 0 0 400px;
+}
+
+.school_images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 50% 0 50%;
+}
+
+footer p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+.school_links {
+    text-decoration: none;
+}
+
+.school_links:link, .school_links:visited {
+    color: #009973;
+}
+
+.school_links:hover, .school_links:active {
+    color: rgb(0, 96, 85);
+}
