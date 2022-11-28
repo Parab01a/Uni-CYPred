@@ -1,0 +1,137 @@
+.grid {
+    display: grid;
+    grid-template-areas: 'item1 item1' 'item2 item3' 'item2 item4' 'item5 item4';
+    /*background-color: #7a9cc6;*/
+    /*grid-gap: 0 10px;*/
+    grid-template-columns: 50% 50%;
+}
+
+/*.grid > div {*/
+/*    background-color: rgba(255, 255, 255, 0.8);*/
+/*}*/
+
+.item1 {
+    grid-area: item1;
+    text-align: center;
+    padding: 50px 0 0 0;
+}
+
+.item1 p {
+    font-weight: bold;
+    font-size: 48px;
+    color: black;
+}
+
+.item2 {
+    grid-area: item2;
+    padding: 70px 0 0 280px;
+}
+
+.item3 {
+    grid-area: item3;
+    padding: 140px 0 0 55px;
+}
+
+.item3 p {
+    font-size: 18px;
+}
+
+.item4 {
+    grid-area: item4;
+    padding: 70px 0 0 230px;
+}
+
+.item5 {
+    grid-area: item5;
+    padding: 0 0 170px 280px;   /* 设置网格与页脚的距离 */
+}
+
+.jsme {
+    display: flex;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*padding: 50px 0 0 200px;*/
+    /*border: 2px black solid;*/
+}
+
+/*#jsme_container {*/
+/*    border: 2px black solid;*/
+/*}*/
+
+.show-jsme {
+    width: 500px;
+    border: none;
+    outline: 1px dotted rgb(37, 37, 37);
+    outline-offset: -4px;
+    background: hsl(0deg 0% 75%);
+    box-shadow: inset -1px -1px #292929, inset 1px 1px #fff, inset -2px -2px rgb(158, 158, 158), inset 2px 2px #ffffff;
+    font-family: MyFont, Arial, sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 30px;
+    cursor: pointer;
+}
+
+.show-jsme:active {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #292929, inset -2px -2px #ffffff, inset 2px 2px rgb(158, 158, 158);
+}
+
+.input {
+    width: 550px;
+    line-height: 32px;
+    border: 2px solid transparent;
+    border-bottom-color: dimgray;
+    padding: .2rem 0;
+    outline: none;
+    background-color: transparent;
+    color: black;
+    font-size: 18px;
+    font-family: MyFont, Arial, sans-serif;
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.input:focus, .input:hover {
+    outline: none;
+    padding: .2rem 1rem;
+    border-radius: 1rem;
+    border-color: #009973;
+}
+
+.input::placeholder {
+    color: #777777;
+}
+
+.input:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.submit {
+    width: 200px;
+    padding: 1.3em 3em;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: MyFont, Arial, sans-serif;
+    font-weight: bold;
+    color: #009973;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.submit:hover {
+    background-color: #009973;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, 0.3);
+    color: #ffffff;
+    transform: translateY(-7px);
+}
+
+.submit:active {
+    transform: translateY(-1px);
+}

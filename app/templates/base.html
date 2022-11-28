@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="static/images/ecust_logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="static/img/ecust_logo.png" type="image/x-icon">
     <link rel="stylesheet" href="static/css/font.css" type="text/css">
     <link rel="stylesheet" href="static/css/navbar.css" type="text/css">
     <link rel="stylesheet" href="static/css/body.css" type="text/css">
@@ -20,32 +20,35 @@
         </ul>
     </header>
 
-    <section class="banner"></section>
-    <script src="static/js/banner.js"></script>
-
-    {% block content %}
+    {% block index %}
     {% endblock %}
 
-    <main class="content">
-        <p>Content</p>
-    </main>
+    {% block predict %}
+    {% endblock %}
+
+<!--    <main class="content">-->
+<!--        <p>Content</p>-->
+<!--    </main>-->
 
     <footer>
-        <div class="school_images">
+        <div class="school_img">
         <a href="https://www.ecust.edu.cn/" target="_blank" rel="noopener noreferrer">
-            <img src="static/images/ecust_logo.png" alt="ecust_logo" loading="lazy" class="school"></a>
+            <img src="static/img/ecust_logo.png" alt="ecust_logo" loading="lazy" class="school"></a>
         <a href="https://pharmacy.ecust.edu.cn/" target="_blank" rel="noopener noreferrer">
-            <img src="static/images/pharmacy_logo.png" alt="pharmacy_logo" loading="lazy" class="school"></a>
+            <img src="static/img/pharmacy_logo.png" alt="pharmacy_logo" loading="lazy" class="school"></a>
         <a href="http://lmmd.ecust.edu.cn/" target="_blank" rel="noopener noreferrer">
-            <img src="static/images/lmmd_logo.png" alt="lmmd_logo" loading="lazy" class="school"></a>
+            <img src="static/img/lmmd_logo.png" alt="lmmd_logo" loading="lazy" class="school"></a>
         </div>
 
         <a href="https://flask.palletsprojects.com/en/2.2.x/" target="_blank" rel="noopener noreferrer">
-            <img src="static/images/flask_logo.png" alt="flask_logo" loading="lazy" class="flask"></a>
+            <img src="static/img/flask_logo.png" alt="flask_logo" loading="lazy" class="flask"></a>
         <p>Copyright &copy 2023&nbsp<a href="http://lmmd.ecust.edu.cn/" target="_blank" rel="noopener noreferrer" class="school_links">
             Laboratory of Molecular Modeling and Design</a>,<a href="https://pharmacy.ecust.edu.cn/" target="_blank" rel="noopener noreferrer" class="school_links">
             School of Pharmacy</a>,<a href="https://www.ecust.edu.cn/" target="_blank" rel="noopener noreferrer" class="school_links">
             East China University of Science and Technology</a>.</p>
     </footer>
+
+    <section class="banner"></section>
+    <script src="static/js/banner.js"></script>
 </body>
 </html>
