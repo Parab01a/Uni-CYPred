@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="static/img/ecust_logo.png" type="image/x-icon">
     <link rel="stylesheet" href="static/css/font.css" type="text/css">
     <link rel="stylesheet" href="static/css/navbar.css" type="text/css">
     <link rel="stylesheet" href="static/css/body.css" type="text/css">
     <link rel="stylesheet" href="static/css/footer.css" type="text/css">
     <title>PredCyp-{{title}}</title>
+    <script src="static/js/banner.js"></script>
 </head>
 <body>
+    <section class="banner"></section>
     <header>
         <a href="{{ url_for('index') }}" class="logo">PredCyp</a>
+
+        <input type="checkbox" id="nav-checkbox">
+        <label for="nav-checkbox">&#9776</label>
+
+        <div class="navbar_right">
         <ul class="navbar">
-            <li class="navbar_list"><a href="{{ url_for('index') }}" class="navbar_button">Home</a></li>
+            <li class="navbar_list" id="navlist_home"><a href="{{ url_for('index') }}" class="navbar_button">Home</a></li>
             <li class="navbar_list"><a href="{{ url_for('predict') }}" class="navbar_button">Predict</a></li>
             <li class="navbar_list"><a href="{{ url_for('index') }}" class="navbar_button">Results</a></li>
             <li class="navbar_list"><a href="{{ url_for('contact') }}" class="navbar_button">Contact</a></li>
         </ul>
+        </div>
     </header>
 
     {% block index %}
@@ -26,9 +35,13 @@
     {% block predict %}
     {% endblock %}
 
-<!--    <main class="content">-->
-<!--        <p>Content</p>-->
-<!--    </main>-->
+    <main class="content"></main>
+
+<!-- 查看浏览器窗口大小 -->
+    <p id="demo"></p>
+    <script src="static/js/window_width.js"></script>
+<!-- 查看浏览器窗口大小 -->
+
 
     <footer>
         <div class="school_img">
@@ -40,15 +53,14 @@
             <img src="static/img/lmmd_logo.png" alt="lmmd_logo" loading="lazy" class="school"></a>
         </div>
 
+        <div class="flask_copy">
         <a href="https://flask.palletsprojects.com/en/2.2.x/" target="_blank" rel="noopener noreferrer">
             <img src="static/img/flask_logo.png" alt="flask_logo" loading="lazy" class="flask"></a>
         <p>Copyright &copy 2023&nbsp<a href="http://lmmd.ecust.edu.cn/" target="_blank" rel="noopener noreferrer" class="school_links">
             Laboratory of Molecular Modeling and Design</a>,<a href="https://pharmacy.ecust.edu.cn/" target="_blank" rel="noopener noreferrer" class="school_links">
             School of Pharmacy</a>,<a href="https://www.ecust.edu.cn/" target="_blank" rel="noopener noreferrer" class="school_links">
             East China University of Science and Technology</a>.</p>
+        </div>
     </footer>
-
-    <section class="banner"></section>
-    <script src="static/js/banner.js"></script>
 </body>
 </html>

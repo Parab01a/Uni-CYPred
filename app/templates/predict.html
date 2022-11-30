@@ -9,23 +9,22 @@
     </div>
 
     <div class="item2">
-    <div class="jsme">
-        <div id="jsme_container"></div>
-    </div>
+        <p>Please input a SMILES string or draw a chemical structure to predict:</p>
     </div>
 
     <div class="item3">
-    <p>Please input a SMILES string to predict:</p><br>
-    <label>
-    <input class="input" placeholder="SMILES-EXAMPLE" type="text" required="" maxlength="200">
-    </label>
+        <div id="jsme_container"></div>
     </div>
 
     <div class="item4">
-    <button class="submit" type="submit">SUBMIT</button>
+    <input class="input" placeholder="SMILES-Example" type="text" required="" maxlength="200">
     </div>
 
     <div class="item5">
+    <button class="submit" type="submit">SUBMIT</button>
+    </div>
+
+    <div class="item6">
     <button class="show-jsme" type="button" onclick="alert(jsmeApplet.smiles())">Show SMILES</button>
     </div>
 </div>

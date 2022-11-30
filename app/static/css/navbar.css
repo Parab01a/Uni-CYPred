@@ -2,6 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    /*网页元素调整*/
+
+	/*outline:solid #f00 1px !important;*/
+	/*background: #000 !important;*/
+	/*color: #fff !important;*/
 }
 
 body {
@@ -13,28 +19,28 @@ header {
     /*background-image: linear-gradient(to right, rgba(153, 204, 153, 1),
     rgba(153, 204, 153, 0.45), rgba(153, 204, 153, 1));*/
     /*background-color: rgb(153, 204, 153);*/
-    /*background-color: black;*/
-    background-color: rgba(204, 204, 204, 0.2);
+    background-color: rgba(238, 238, 238, 1);
     position: sticky;   /* !!!!! */
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    width: 100%;
+    width: 100%;    /*width: 100%*/
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: 0.6s;
+    transition: 0.7s;
     padding: 25px 10%;
     box-shadow: 0 5px 8px darkgray;
-    /*box-shadow: 0 3px 5px darkgray;*/
-    border-radius: 0 0 90px 90px;
+    /*border-radius: 0 0 90px 90px;*/
     z-index: 10000;
+    height: 12vh;
 }
 
 header.sticky {
     padding: 10px 10%;
     background-color: rgba(221, 221, 221, 1);
+    height: 8vh;
 }
 
 .logo {
@@ -69,35 +75,127 @@ header.sticky {
     font-weight: bold;
     font-size: 18px;
     transition: 0.2s;
-    display: inline-block;   /* add underline */
+    /*display: inline-block;   !* add underline 弹开效果 不稳定 *!*/
 }
-
-/*header ul li a:hover, a:active {*/
-/*    !*color: #cc6699;*!*/
-/*    color: rgb(0, 96, 85);*/
-/*    !*text-decoration: underline;*!*/
-/*    padding-bottom: 8px;   !* add underline *!*/
-/*    border-bottom: 2px solid;   !* add underline *!*/
-/*}*/
 
 .navbar_button:hover, .navbar_button:active {
     color: rgb(0, 96, 85);
-    padding-bottom: 8px;   /* add underline */
+    padding-bottom: 6px;   /* add underline */
     border-bottom: 2px solid;   /* add underline */
 }
 
 .logo:hover, .logo:active {
     color: rgb(0, 96, 85);
-    /*text-decoration: none;*/
-    /*padding-bottom: 0;*/
-    /*border-bottom: none;*/
 }
 
 header.sticky .logo, .navbar_button {
     color: #009973;
-    /*color: rgb(66, 170, 145);*/
 }
 
 header.sticky .logo:hover, .logo:active {
     color: rgb(0, 96, 85);
 }
+
+/*响应式布局适用于小于750px时展现的布局*/
+/*小于750px时导航栏变为下拉菜单模式*/
+
+label[for="nav-checkbox"] {
+    display: none;
+}
+
+#nav-checkbox {
+    width: 0;
+    height: 0;
+}
+
+@media only screen and (max-width: 750px) {
+    header {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        /*position: relative;*/
+    }
+
+    label[for="nav-checkbox"] {
+        width: 54px;
+        height: 45px;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: rgb(173, 173, 173) 2px solid;
+        color: rgb(173, 173, 173);
+        border-radius: 10px;
+    }
+
+    label[for="nav-checkbox"]:hover {
+        color: #009973;
+        border: 3px #009973 solid;
+    }
+
+    #nav-checkbox:checked + label {
+        color: #009973;
+        border: 3px #009973 solid;
+    }
+
+    .navbar_right {
+        display: none;
+        flex: 0 0 100%;
+        width: 100%;
+        flex-direction: column;
+        justify-content: initial;
+        align-items: initial;
+    }
+
+    .navbar {
+        flex-direction: column;
+        justify-content: initial;
+        align-items: initial;
+        width: 100%;
+
+    }
+
+    .navbar_list {
+        padding: 13px 0;
+        width: 100%;
+    }
+
+    #navlist_home {
+        padding-top: 3px;
+    }
+
+    .navbar_button {
+        display: flex;
+        width: 100%;
+        margin: 0;
+    }
+
+    .navbar_button:hover, .navbar_button:active {
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
+    #nav-checkbox:checked ~ .navbar_right {
+        display: flex;
+        position: absolute;
+        top: 12vh;
+        right: 0;
+        padding: 0 10% 10px 10%;
+        background-color: rgba(238, 238, 238, 1);
+        z-index: 10000;
+        transition: 0.7s;
+        box-shadow: 0 7px 5px -5px darkgray;
+        animation: dropdown 0.45s;
+    }
+
+    header.sticky #nav-checkbox:checked ~ .navbar_right {
+        top: 8vh;
+        background-color: rgba(221, 221, 221, 1);
+        transition: 0.7s;
+    }
+
+    @keyframes dropdown {
+        from {opacity: 0}
+        to {opacity: 1}
+    }
+}
+

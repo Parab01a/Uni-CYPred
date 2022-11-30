@@ -1,18 +1,14 @@
 .grid {
     display: grid;
-    grid-template-areas: 'item1 item1' 'item2 item3' 'item2 item4' 'item5 item4';
-    /*background-color: #7a9cc6;*/
-    /*grid-gap: 0 10px;*/
-    grid-template-columns: 50% 50%;
+    grid-template-areas: 'item1 item1' 'item2 item2' 'item3 item4' 'item3 item5' 'item6 item5';
+    grid-template-columns: 1fr 1fr;
 }
-
-/*.grid > div {*/
-/*    background-color: rgba(255, 255, 255, 0.8);*/
-/*}*/
 
 .item1 {
     grid-area: item1;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 50px 0 0 0;
 }
 
@@ -24,40 +20,51 @@
 
 .item2 {
     grid-area: item2;
-    padding: 70px 0 0 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0 30px 0;
+}
+
+.item2 p {
+    font-weight: bold;
+    font-size: 22px;
+    color: #009973;
 }
 
 .item3 {
     grid-area: item3;
-    padding: 140px 0 0 55px;
-}
-
-.item3 p {
-    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 0 130px;
 }
 
 .item4 {
     grid-area: item4;
-    padding: 70px 0 0 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 80px 0 0;
 }
 
 .item5 {
     grid-area: item5;
-    padding: 0 0 170px 280px;   /* 设置网格与页脚的距离 */
-}
-
-.jsme {
     display: flex;
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*padding: 50px 0 0 200px;*/
-    /*border: 2px black solid;*/
+    justify-content: center;
+    align-items: center;
+    padding: 0 80px 250px 0;
 }
 
-/*#jsme_container {*/
-/*    border: 2px black solid;*/
-/*}*/
+.item6 {
+    grid-area: item6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 170px 130px;   /* 设置网格与页脚的距离 */
+}
 
+/*show jsme按钮样式*/
 .show-jsme {
     width: 500px;
     border: none;
@@ -77,6 +84,7 @@
   box-shadow: inset -1px -1px #fff, inset 1px 1px #292929, inset -2px -2px #ffffff, inset 2px 2px rgb(158, 158, 158);
 }
 
+/*input（SMILES）输入框样式*/
 .input {
     width: 550px;
     line-height: 32px;
@@ -107,6 +115,7 @@
     transition: opacity .3s;
 }
 
+/*submit按钮样式*/
 .submit {
     width: 200px;
     padding: 1.3em 3em;
@@ -134,4 +143,29 @@
 
 .submit:active {
     transform: translateY(-1px);
+}
+
+/*当页面小于1300px时改变布局*/
+@media only screen and (max-width: 1300px) {
+    .grid {
+    display: grid;
+    grid-template-areas: 'item1' 'item2' 'item4' 'item3' 'item6' 'item5';
+    grid-template-columns: 1fr;
+}
+
+.item3 {
+    padding: 20px 0 0 0;
+}
+
+.item4 {
+    padding: 0;
+}
+
+.item5 {
+    padding: 50px 0 170px 0;  /* 设置网格与页脚的距离 */
+}
+
+.item6 {
+    padding: 0;
+}
 }
