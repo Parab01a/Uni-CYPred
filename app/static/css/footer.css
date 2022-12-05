@@ -66,3 +66,11 @@ footer {
 .school_links:hover, .school_links:active {
     color: rgb(0, 96, 85);
 }
+
+@media only screen and (max-width: 1060px) {
+    .flask_copy p {
+        text-align: center;
+        margin: 0 0 0 5px;
+        transition: 0.5s;
+    }
+}

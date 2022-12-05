@@ -40,6 +40,11 @@
     padding: 10px 0 0 130px;
 }
 
+#jsme_container {
+    width: 500px;
+    height: 400px;
+}
+
 .item4 {
     grid-area: item4;
     display: flex;
@@ -168,4 +173,48 @@
 .item6 {
     padding: 0;
 }
+}
+
+@media only screen and (max-width: 725px) {
+    .item2 p {
+        text-align: center;
+        padding: 0 10px 0 10px;
+        transition: 0.5s;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .input {
+        width: 475px;
+        transition: 0.5s;
+    }
+
+    .show-jsme {
+        width: 475px;
+        transition: 0.5s;
+    }
+
+    #jsme_container {
+        width: 475px;
+        height: 380px;
+        transition: 0.5s;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .input {
+        width: 430px;
+        transition: 0.5s;
+    }
+
+    .show-jsme {
+        width: 430px;
+        transition: 0.5s;
+    }
+
+    #jsme_container {
+        width: 430px;
+        height: 344px;
+        transition: 0.5s;
+    }
 }

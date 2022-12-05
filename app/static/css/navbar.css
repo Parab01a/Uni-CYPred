@@ -104,8 +104,9 @@ label[for="nav-checkbox"] {
 }
 
 #nav-checkbox {
-    width: 0;
-    height: 0;
+    /*width: 0;*/
+    /*height: 0;*/
+    display: none;
 }
 
 @media only screen and (max-width: 750px) {
@@ -118,7 +119,7 @@ label[for="nav-checkbox"] {
     label[for="nav-checkbox"] {
         width: 54px;
         height: 45px;
-        font-size: 30px;
+        font-size: 22px;
         display: flex;
         justify-content: center;
         align-items: center;
