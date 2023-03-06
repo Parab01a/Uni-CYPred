@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="static/css/body.css" type="text/css">
     <link rel="stylesheet" href="static/css/footer.css" type="text/css">
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
-    <title>PredCyp-{{title}}</title>
+    <script src="static/jquery-3.5.1/jquery-3.5.1.min.js"></script>
     <script src="static/js/banner.js"></script>
+    <title>PredCyp-{{title}}</title>
 </head>
 <body>
     <section class="banner"></section>
@@ -19,13 +20,13 @@
 
         <input type="checkbox" id="nav-checkbox">
 <!--        <label for="nav-checkbox">&#9776</label>-->
-        <label for="nav-checkbox"><i class="fa fa-bars"></i></label>
+        <label for="nav-checkbox" id="label"><i class="fa fa-bars"></i></label>
 
         <div class="navbar_right">
         <ul class="navbar">
             <li class="navbar_list" id="navlist_home"><a href="{{ url_for('index') }}" class="navbar_button">Home</a></li>
             <li class="navbar_list"><a href="{{ url_for('predict') }}" class="navbar_button">Predict</a></li>
-            <li class="navbar_list"><a href="{{ url_for('index') }}" class="navbar_button">Results</a></li>
+            <li class="navbar_list"><a href="{{ url_for('results') }}" class="navbar_button">Results</a></li>
             <li class="navbar_list"><a href="{{ url_for('contact') }}" class="navbar_button">Contact</a></li>
         </ul>
         </div>
@@ -35,6 +36,12 @@
     {% endblock %}
 
     {% block predict %}
+    {% endblock %}
+
+    {% block results %}
+    {% endblock %}
+
+    {% block contact %}
     {% endblock %}
 
     <main class="content"></main>
@@ -64,5 +71,6 @@
             East China University of Science and Technology</a>.</p>
         </div>
     </footer>
+<!--<script src="static/js/slide.js"></script>-->
 </body>
 </html>

@@ -1,0 +1,4 @@
+body {
+    /*防止右侧出现滚动条导致页面左移*/
+    overflow-y: scroll;
+}

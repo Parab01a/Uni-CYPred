@@ -119,7 +119,7 @@ label[for="nav-checkbox"] {
     label[for="nav-checkbox"] {
         width: 54px;
         height: 45px;
-        font-size: 22px;
+        font-size: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -140,8 +140,13 @@ label[for="nav-checkbox"] {
 
     .navbar_right {
         display: none;
+        position: absolute;
+        top: 12vh;
+        right: 0;
+        padding: 0 10% 10px 10%;
         flex: 0 0 100%;
         width: 100%;
+        background-color: rgba(238, 238, 238, 1);
         flex-direction: column;
         justify-content: initial;
         align-items: initial;
@@ -177,15 +182,15 @@ label[for="nav-checkbox"] {
 
     #nav-checkbox:checked ~ .navbar_right {
         display: flex;
-        position: absolute;
-        top: 12vh;
-        right: 0;
-        padding: 0 10% 10px 10%;
-        background-color: rgba(238, 238, 238, 1);
+        /*position: absolute;*/
+        /*top: 12vh;*/
+        /*right: 0;*/
+        /*padding: 0 10% 10px 10%;*/
+        /*background-color: rgba(238, 238, 238, 1);*/
         z-index: 10000;
-        transition: 0.7s;
         box-shadow: 0 7px 5px -5px darkgray;
-        animation: dropdown 0.45s;
+        transition: 0.7s;
+        /*animation: dropdown 0.45s;*/
     }
 
     header.sticky #nav-checkbox:checked ~ .navbar_right {
@@ -194,9 +199,9 @@ label[for="nav-checkbox"] {
         transition: 0.7s;
     }
 
-    @keyframes dropdown {
-        from {opacity: 0}
-        to {opacity: 1}
-    }
+    /*@keyframes dropdown {*/
+    /*    from {opacity: 0}*/
+    /*    to {opacity: 1}*/
+    /*}*/
 }
 

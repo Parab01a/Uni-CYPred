@@ -16,13 +16,14 @@
         <div id="jsme_container"></div>
     </div>
 
-    <div class="item4">
-    <input class="input" placeholder="SMILES-Example" type="text" required="" maxlength="200">
-    </div>
-
-    <div class="item5">
-    <button class="submit" type="submit">SUBMIT</button>
-    </div>
+    <form action="{{ url_for('results')}}" method="post">
+        <div class="smiles_input">
+        <input class="input" name="smiles" placeholder="SMILES-Example" type="text" required="" maxlength="200">
+        </div>
+        <div class="smiles_submit">
+        <button class="submit" type="submit">SUBMIT</button>
+        </div>
+    </form>
 
     <div class="item6">
     <button class="show-jsme" type="button" onclick="alert(jsmeApplet.smiles())">Show SMILES</button>
