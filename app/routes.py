@@ -2,7 +2,7 @@
 from app import app
 from flask import render_template, request, redirect, url_for
 from rdkit import Chem
-from rdkit.Chem import AllChem, DataStructs
+from rdkit.Chem import AllChem, DataStructs, Draw
 from joblib import load
 import numpy as np
 
@@ -39,7 +39,14 @@ def results():
         fp = AllChem.GetMorganFingerprintAsBitVect(m, 2)
         x = rdkit_numpy_convert(fp)
         prediction = svm.predict(x)
-        return render_template('results.html', title='Results', prediction='likely{}'.format(prediction))
+        if prediction == [1]:
+            prediction = "inhibitor"
+        else:
+            prediction = "non-inhibitor"
+        # if prediction:
+        #     result_img = Draw.MolToImage(m)
+
+        return render_template('results.html', title='Results', prediction=prediction)
 
 
 @app.route('/contact')
