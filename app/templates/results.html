@@ -3,14 +3,12 @@
 {% block results %}
 
 <div>
+    {% if plot_url %}
     <h1>{{ prediction }}</h1>
-</div>
-<div>
-<!--    <img src="data:;base64,{{ result_img }}" alt="failed">-->
-<!--    {{ result_img }}-->
-<!--    {% if result_img != "" %}-->
-<!--    <img src="result_img">-->
-<!--    {% endif %}-->
+    <img src="data:image/png;base64, {{ plot_url }}" alt="">
+    {% else %}
+    <p>Please turn to the Predict page to input your own molecule first before you get the results!</p>
+    {% endif %}
 </div>
 
 {% endblock %}

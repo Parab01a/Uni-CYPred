@@ -88,13 +88,19 @@ header.sticky {
     color: rgb(0, 96, 85);
 }
 
-header.sticky .logo, .navbar_button {
-    color: #009973;
+.highlight {
+    color: rgb(0, 96, 85);
+    padding-bottom: 6px;
+    border-bottom: 2px solid;
 }
 
-header.sticky .logo:hover, .logo:active {
-    color: rgb(0, 96, 85);
-}
+/*header.sticky .logo, .navbar_button {*/
+/*    color: #009973;*/
+/*}*/
+
+/*header.sticky .logo:hover, .logo:active {*/
+/*    color: rgb(0, 96, 85);*/
+/*}*/
 
 /*响应式布局适用于小于750px时展现的布局*/
 /*小于750px时导航栏变为下拉菜单模式*/

@@ -23,7 +23,7 @@
         <label for="nav-checkbox" id="label"><i class="fa fa-bars"></i></label>
 
         <div class="navbar_right">
-        <ul class="navbar">
+        <ul class="navbar" id="navbar">
             <li class="navbar_list" id="navlist_home"><a href="{{ url_for('index') }}" class="navbar_button">Home</a></li>
             <li class="navbar_list"><a href="{{ url_for('predict') }}" class="navbar_button">Predict</a></li>
             <li class="navbar_list"><a href="{{ url_for('results') }}" class="navbar_button">Results</a></li>
@@ -75,5 +75,31 @@
         </div>
     </footer>
 <!--<script src="static/js/slide.js"></script>-->
+
+<!--highlight js-->
+    <script>
+        $(function () {
+            // get current page url
+            let url = location.href;
+            // alert(url)
+            // current page highlight status
+            let status = false;
+            // search every a tag in ul which id=navbar, and add highlight class
+            $('#navbar a').each(function () {
+                // match current page's url and add highlight
+                if((url + '/').indexOf($(this).attr('href')) > -1 && $(this).attr('href') !== '') {
+                    // $(this).parent('li').addClass('highlight');
+                    $(this).addClass('highlight');
+                    status = true;
+                }else {
+                    $(this).removeClass('highlight');
+                }
+            });
+            // default: first is highlighted
+            if(!status) {
+                $('#navbar a').eq(0).addClass('highlight');
+            }
+        })
+    </script>
 </body>
 </html>
