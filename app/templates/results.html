@@ -4,11 +4,13 @@
 
 <div>
     {% if plot_url %}
-    <h1>{{ prediction }}</h1>
+    <h1>{{ prediction_str }}; {{ class_2c8 }}</h1>
     <img src="data:image/png;base64, {{ plot_url }}" alt="">
     {% else %}
     <p>Please turn to the Predict page to input your own molecule first before you get the results!</p>
     {% endif %}
 </div>
+
+<!--checkbox 选择用户想要哪种cyp的预测-->
 
 {% endblock %}

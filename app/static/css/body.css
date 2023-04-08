@@ -2,3 +2,41 @@ body {
     /*防止右侧出现滚动条导致页面左移*/
     overflow-y: scroll;
 }
+
+#back_to_top {
+    display: none;
+    position: fixed;
+    right: 5px;
+    bottom: 100px;
+    cursor: pointer;
+    transition: all .2s;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background: transparent;
+    border: 2px solid #009973;
+    justify-content: center;
+    align-items: center;
+    /*opacity: 0;*/
+
+}
+
+#back_to_top:hover {
+    border: 2px solid rgb(0, 96, 85);
+}
+
+#back_to_top > svg {
+    width: 30px;
+    height: 25px;
+    transition: transform .3s ease-in-out;
+}
+
+#back_to_top:hover svg {
+    /*点击箭头向上滑动效果*/
+    transform: translateY(-3px);
+    color: rgb(0, 96, 85);
+}
+
+#back_to_top:active {
+    /*点击后缩小为95%，点击效果*/
+    transform: scale(0.95);
+}

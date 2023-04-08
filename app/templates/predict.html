@@ -31,9 +31,10 @@
         <div id="jsme_container"></div>
     </div>
 
-    <form action="{{ url_for('results')}}" method="post">
+    <form action="{{ url_for('results')}}" method="post" enctype="multipart/form-data">
         <div class="smiles_input">
-        <input class="input" id="smiles_input" name="smiles" placeholder="CCOc2nc1cccc(C(=O)O)c1n2Cc5ccc(c3ccccc3c4nc(=O)o[nH]4)cc5" type="text" required="" maxlength="200">
+        <input type="file" name="file_input" accept=".sdf, .txt, .smi">
+        <input class="input" id="smiles_input" name="smiles" placeholder="CCOc2nc1cccc(C(=O)O)c1n2Cc5ccc(c3ccccc3c4nc(=O)o[nH]4)cc5" type="text" required="required" maxlength="200">
         </div>
         <div class="smiles_submit">
         <button class="submit" type="submit">SUBMIT</button>

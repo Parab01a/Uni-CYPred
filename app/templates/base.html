@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <script src="static/jquery-3.5.1/jquery-3.5.1.min.js"></script>
     <script src="static/js/banner.js"></script>
+    <script src="static/js/navbar_highlight.js"></script>
     <title>PredCyp-{{title}}</title>
 </head>
 <body>
@@ -27,7 +28,7 @@
             <li class="navbar_list" id="navlist_home"><a href="{{ url_for('index') }}" class="navbar_button">Home</a></li>
             <li class="navbar_list"><a href="{{ url_for('predict') }}" class="navbar_button">Predict</a></li>
             <li class="navbar_list"><a href="{{ url_for('results') }}" class="navbar_button">Results</a></li>
-            <li class="navbar_list"><a href="{{ url_for('contact') }}" class="navbar_button">Contact</a></li>
+            <li class="navbar_list"><a href="{{ url_for('about') }}" class="navbar_button">About</a></li>
         </ul>
         </div>
     </header>
@@ -41,21 +42,35 @@
     {% block results %}
     {% endblock %}
 
-    {% block contact %}
+    {% block about %}
     {% endblock %}
 
     {% block none %}
     {% endblock %}
 
-    <main class="content"></main>
+    <main class="content">
+<!--        <button onclick="backToTop()" id="back_to_top" title="Go to top">-->
+<!--            <span>Back To Top</span>-->
+<!--            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">-->
+<!--            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>-->
+<!--            </svg>-->
+<!--        </button>-->
+    </main>
+
 
 <!-- 查看浏览器窗口大小 -->
-    <p id="demo"></p>
-    <script src="static/js/window_width.js"></script>
+<!--    <p id="demo"></p>-->
+<!--    <script src="static/js/window_width.js"></script>-->
 <!-- 查看浏览器窗口大小 -->
 
 
     <footer>
+        <button onclick="backToTop()" id="back_to_top" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-double-up" viewBox="0 0 16 16" color="#009973">
+            <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 3.707 2.354 9.354a.5.5 0 1 1-.708-.708l6-6z"/>
+            <path fill-rule="evenodd" d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+            </svg>
+        </button>
         <div class="school_img">
         <a href="https://www.ecust.edu.cn/" target="_blank" rel="noopener noreferrer nofollow">
             <img src="static/img/ecust_logo.png" alt="ecust_logo" loading="lazy" class="school"></a>
@@ -76,30 +91,28 @@
     </footer>
 <!--<script src="static/js/slide.js"></script>-->
 
-<!--highlight js-->
+<!--    js: back to top-->
     <script>
-        $(function () {
-            // get current page url
-            let url = location.href;
-            // alert(url)
-            // current page highlight status
-            let status = false;
-            // search every a tag in ul which id=navbar, and add highlight class
-            $('#navbar a').each(function () {
-                // match current page's url and add highlight
-                if((url + '/').indexOf($(this).attr('href')) > -1 && $(this).attr('href') !== '') {
-                    // $(this).parent('li').addClass('highlight');
-                    $(this).addClass('highlight');
-                    status = true;
-                }else {
-                    $(this).removeClass('highlight');
-                }
-            });
-            // default: first is highlighted
-            if(!status) {
-                $('#navbar a').eq(0).addClass('highlight');
+        // Get the button:
+        let btt_button = document.getElementById("back_to_top");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btt_button.style.display = "block";
+            } else {
+                btt_button.style.display = "none";
             }
-        })
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function backToTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
     </script>
+
 </body>
 </html>

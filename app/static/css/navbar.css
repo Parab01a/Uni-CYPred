@@ -18,7 +18,7 @@ body {
 header {
     /*background-image: linear-gradient(to right, rgba(153, 204, 153, 1),
     rgba(153, 204, 153, 0.45), rgba(153, 204, 153, 1));*/
-    /*background-color: rgb(153, 204, 153);*/
+
     background-color: rgba(238, 238, 238, 1);
     position: sticky;   /* !!!!! */
     top: 0;
@@ -47,8 +47,6 @@ header.sticky {
     position: relative;
     font-weight: bold;
     color: #009973;
-    /*color: #009999;*/
-    /*color: rgb(66, 170, 145);*/
     text-decoration: none;
     font-size: 32px;
     transition: 0.3s;
@@ -71,7 +69,6 @@ header.sticky {
     margin: 0 25px;
     text-decoration: none;
     color: #009973;
-    /*color: rgb(66, 170, 145);*/
     font-weight: bold;
     font-size: 18px;
     transition: 0.2s;

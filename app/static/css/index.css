@@ -1,0 +1,7 @@
+.grid_index {
+    min-height: 88vh;
+    /*display: grid;*/
+    /*grid-template-areas: 'index1';*/
+    /*grid-template-columns: 1fr 1fr;*/
+    background-color: #7AA5D6;
+}
