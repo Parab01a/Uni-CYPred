@@ -1,50 +1,146 @@
 {% extends "base.html" %}
 
 {% block predict %}
-<link rel="stylesheet" href="static/css/predict.css" type="text/css">
-<script type="text/javascript" src="static/jsme/jsme.nocache.js"></script>
+<link rel="stylesheet" href="../static/css/predict.css" type="text/css">
+<link rel="stylesheet" href="../static/css/loader.css" type="text/css">
+<!--<link rel="stylesheet" href="../static/ChemDoodleWeb-9.5.0/install/ChemDoodleWeb.css" type="text/css">-->
+<!--<script type="text/javascript" src="../static/ChemDoodleWeb-9.5.0/install/ChemDoodleWeb.js"></script>-->
+<!--<script type="text/javascript" src="../static/jsme/jsme.nocache.js"></script>-->
 <script>
-    function jsmeOnLoad() {
-        // e.g. Azirsartan(CYP2C8 inhibitor) PubChem CID 9825285
-        var startingStructure = "CCOc2nc1cccc(C(=O)O)c1n2Cc5ccc(c3ccccc3c4nc(=O)o[nH]4)cc5"
-        jsmeApplet = new JSApplet.JSME("jsme_container", {"options" : "oldlook, marker, rbutton",
-                                                          "smiles" : startingStructure});
-        document.JME = jsmeApplet;
-    }
-
-    function getSmiles() {
-        document.getElementById("smiles_input").value = document.JME.smiles();
-    }
+    // function jsmeOnLoad() {
+    //     // e.g. Azirsartan(CYP2C8 inhibitor) PubChem CID 9825285
+    //     var startingStructure = "CCOc2nc1cccc(C(=O)O)c1n2Cc5ccc(c3ccccc3c4nc(=O)o[nH]4)cc5"
+    //     jsmeApplet = new JSApplet.JSME("jsme", {"options" : "oldlook, marker, rbutton",
+    //                                                       "smiles" : startingStructure});
+    //     document.JME = jsmeApplet;
+    // }
+    // function getSmiles() {
+    //     document.getElementById("smiles_input").value = document.JME.smiles();
+    // }
     // 如何JSME不必转换直接提交？
+    // use XMLHttpRequest???
+</script>
+<script>
+    function showPlaceholder() {
+        document.getElementById("smiles_input").value = document.getElementById("smiles_input").getAttribute("placeholder");
+}
+
+</script>
+<script>
+    function showLoader(event) {
+        let smilesInput = document.getElementById('smiles_input');
+        let fileInput = document.getElementById("file_input");
+        let smilesInputValue = smilesInput.value.trim();
+        if (smilesInputValue === '' && fileInput.value === '') {
+        event.preventDefault();
+    } else {
+            document.getElementById("mask").style.visibility = "visible";
+            document.getElementById("loader_container").style.visibility = "visible";
+            document.getElementById("loader").style.visibility = "visible";
+            document.getElementById("loader_text").style.visibility = "visible";
+        }
+    }
+</script>
+<!--input alert-->
+<script>
+// 获取input元素和提交按钮元素
+function submitForm(event) {
+    // 首先阻止默认的表单提交行为
+    event.preventDefault();
+    let smilesInput = document.getElementById('smiles_input');
+    let fileInput = document.getElementById("file_input");
+    // 获取alert元素
+    let alertMsg = document.getElementById('input_alert');
+    // trim()修剪inputValue两边的空格，如果输入为' c1ccccc1 '，则修剪为'c1ccccc1'
+    let smilesInputValue = smilesInput.value.trim();
+    // 如果为空，则显示alert，否则隐藏alert
+    if (smilesInputValue === '' && fileInput.value === '') {
+        alertMsg.style.display = 'block';
+        document.getElementById('title_Predict').style.padding = '50px 0 0 0';
+    }
+    if (smilesInputValue !== '' && fileInput.value === '') {
+        alertMsg.style.display = 'none';
+        document.getElementById('submitForm1').submit();  // 不为空则正常提交
+    }
+    if (smilesInputValue === '' && fileInput.value !== '') {
+        alertMsg.style.display = 'none';
+        document.getElementById('submitForm2').submit();  // 不为空则正常提交
+    }
+}
 </script>
 
-<div class="grid">
-    <div class="item1">
-        <p>Predict</p>
+<div id="mask"></div>
+<div id="loader_container">
+    <div id="loader">
+        <div class="red bar"></div>
+        <div class="orange bar"></div>
+        <div class="yellow bar"></div>
+        <div class="green bar"></div>
+        <div class="blue bar"></div>
+        <div class="violet bar"></div>
+    </div>
+    <h3 id="loader_text" class="m-0">Please wait for the results.</h3>
+</div>
+
+<div class="container-fluid g-0 mb-5">
+    <h1 id="title_Predict">-----&nbsp&nbspPredict&nbsp&nbsp-----</h1>
+    <div class="alert alert-danger" id="input_alert" role="alert">
+        <i class="fas fa-exclamation-triangle" id="alert_icon"></i>  <!-- Font Awesome icon -->
+        Error: Invalid input, please check!
     </div>
 
-    <div class="item2">
-        <p>Please input a SMILES string or draw a chemical structure to predict:</p>
-    </div>
+    <div id="tabs">
+        <ul class="nav custom-nav-pills nav-fill nav-justified" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="smiles_tab" role="tab" data-bs-toggle="tab" aria-selected="true" href="#smiles_tab_pane">Input a SMILES string</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="file_tab" role="tab" data-bs-toggle="tab" aria-selected="false" href="#file_tab_pane">Upload file</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="draw_tab" role="tab" data-bs-toggle="tab" aria-selected="false" href="#draw_tab_pane" style="color: gray">Draw a molecule by JSME</a>
+            </li>
+        </ul>
 
-    <div class="item3">
-        <div id="jsme_container"></div>
-    </div>
-
-    <form action="{{ url_for('results')}}" method="post" enctype="multipart/form-data">
-        <div class="smiles_input">
-        <input type="file" name="file_input" accept=".sdf, .txt, .smi">
-        <input class="input" id="smiles_input" name="smiles" placeholder="CCOc2nc1cccc(C(=O)O)c1n2Cc5ccc(c3ccccc3c4nc(=O)o[nH]4)cc5" type="text" required="required" maxlength="200">
+        <div class="tab-content" id="tabsContent">
+            <!--   tab-1   -->
+            <div class="tab-pane fade show active" id="smiles_tab_pane" role="tabpanel" aria-labelledby="smiles_tab" tabindex="0">
+                <form id="submitForm1" action="{{ url_for('results') }}" method="post" onsubmit="submitForm(event); showLoader()">
+                    <div class="row g-0 pt-md-5 pt-4 pb-md-3 pb-0 text-center">
+                        <h4 id="smiles_intro">Please input a SMILES string for prediction:</h4>
+                    </div>
+                    <div class="row g-0 mt-4">
+                        <div class="col-md-4 col-sm-12 col-12 d-flex justify-content-md-end justify-content-center align-items-center pe-md-5 ps-md-3 pe-0 ps-0">
+                            <button id="smiles_eg" type="button" onclick="showPlaceholder()">Example</button>
+                        </div>
+                        <div class="col-md-8 col-sm-12 col-12 d-flex justify-content-md-start justify-content-center align-items-center pe-md-5 pe-0 pt-md-0 pt-3">
+                            <input class="input" id="smiles_input" name="smiles" placeholder="CCOc2nc1cccc(C(=O)O)c1n2Cc5ccc(c3ccccc3c4nc(=O)o[nH]4)cc5" type="text" maxlength="200">
+                        </div>
+                    </div>
+                    <div class="row g-0 mt-md-5 mt-4 mb-4 d-flex justify-content-center align-items-center">
+                        <button class="submit" type="submit">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+            <!--   tab-2   -->
+            <div class="tab-pane fade" id="file_tab_pane" role="tabpanel" aria-labelledby="file_tab" tabindex="0">
+                <form id="submitForm2" action="{{ url_for('results')}}" method="post" enctype="multipart/form-data" onsubmit="submitForm(event); showLoader()">
+                    <div class="row g-0 pt-md-5 pt-4 pb-md-3 pb-0 text-center d-flex justify-content-center align-items-center">
+                        <h4 id="file_intro">Please upload an SDF-formatted file for prediction:</h4>
+                    </div>
+                    <div class="row g-0 mt-4 d-flex justify-content-center align-items-center">
+                        <input type="file" id="file_input" name="file_input" accept=".sdf, .txt" class="form-control" lang="en">
+                    </div>
+                    <div class="row g-0 mt-md-5 mt-4 mb-4 d-flex justify-content-center align-items-center">
+                        <button class="submit" type="submit" id="smiles_submit">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+            <!--   tab-3   -->
+            <div class="tab-pane fade" id="draw_tab_pane" role="tabpanel" aria-labelledby="draw_tab" tabindex="0">
+<!--                <div id="jsme_container"><div id="jsme"></div></div>-->
+            </div>
         </div>
-        <div class="smiles_submit">
-        <button class="submit" type="submit">SUBMIT</button>
-        </div>
-    </form>
-
-    <div class="item6">
-<!--    <button class="show-jsme" type="button" onclick="alert(jsmeApplet.smiles())">Show SMILES</button>-->
-<!--        maybe change button function to clear editor -->
-        <button class="show-jsme" type="button" onclick="getSmiles()">Get SMILES</button>
     </div>
 </div>
 

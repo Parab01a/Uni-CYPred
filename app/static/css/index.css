@@ -1,7 +1,25 @@
-.grid_index {
-    min-height: 88vh;
-    /*display: grid;*/
-    /*grid-template-areas: 'index1';*/
-    /*grid-template-columns: 1fr 1fr;*/
-    background-color: #7AA5D6;
+#title_index {
+    font-family: MyFont, Arial, sans-serif;
+    font-weight: bold;
+    color: #17252A;
+    padding: 50px 0 0 0;
+}
+
+#intro_text {
+    font-family: MyFont, Arial, sans-serif;
+    font-weight: normal;
+    color: #17252A;
+    text-align: justify;  /* 两端对齐 */
+    line-height: 1.5;
+}
+
+h4 {
+    color: #128C85;
+    border-bottom: 1px solid rgba(172, 174, 175, 0.5);
+    text-align: justify;
+}
+
+h5, h6 {
+    color: #17252A;
+    text-align: justify;
 }

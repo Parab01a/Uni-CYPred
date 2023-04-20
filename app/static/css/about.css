@@ -1,4 +1,31 @@
-.grid_about {
-    min-height: 100vh;
-    background-color:  rebeccapurple;
+#row1 {
+    padding-top: 40px;
 }
+
+h2 {
+    color: #128C85;
+}
+
+h4, h5 {
+    color: #17252A;
+}
+
+.mail_links {
+    color: #14A098;
+}
+
+.mail_links:hover {
+    color: #aa00b4;
+}
+
+.supported_links {
+    text-decoration: none;
+    color: #17252A;
+}
+
+.supported_links:hover {
+    color: #14A098;
+}
+
+
+

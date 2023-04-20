@@ -5,12 +5,11 @@ let btt_button = document.getElementById("back_to_top");
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      btt_button.style.display = "block";
-      // alert(btt_button.style.display)
-  } else {
-      btt_button.style.display = "none";
-  }
+    if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+        btt_button.style.display = "block";
+    } else {
+        btt_button.style.display = "none";
+    }
 }
 
 // When the user clicks on the button, scroll to the top of the document

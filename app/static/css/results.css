@@ -1,0 +1,188 @@
+.title_results {
+    font-family: MyFont, Arial, sans-serif;
+    font-weight: bold;
+    color: #17252A;
+    padding: 50px 0 0 0;
+}
+
+.results_url {
+    text-decoration: none;
+    color: #1aab8c;
+}
+
+.results_url:hover {
+    color: #15856e;
+}
+
+.results_url:active {
+    color: #136956;
+}
+
+/* DataTable style */
+
+.dataTables_scroll {
+    border-top: 1px solid rgba(172, 174, 175, 1);
+}
+
+.dataTables_wrapper {
+    font-family: MyFont, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    /*border-collapse: collapse;*/
+}
+
+.dataTables_wrapper table thead th {
+    text-align: center;
+    height: 30px;
+}
+
+.dataTables_wrapper table tbody td {
+    text-align: center;
+    /*height: 135px;*/
+    border: 1px solid rgba(172, 174, 175, 0.5);
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+.dataTables_wrapper .dataTables_length select,
+.dataTables_wrapper .dataTables_filter input {
+    height: 32px;
+    line-height: 32px;
+    padding: 0 10px;  /* length of search box */
+}
+
+.dataTables_wrapper .dataTables_info {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    display: inline-block;
+    vertical-align: middle;
+    height: 40px;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.dataTables_wrapper .dataTables_paginate .current {
+    width: 40px;
+    height: 40px;
+}
+
+.dataTables_wrapper .dataTables_paginate .previous,
+.dataTables_wrapper .dataTables_paginate .next {
+    height: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+    .custom_card2 {
+        width: 90%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* GET请求时Results的界面 */
+
+/*最外面的框，填满body, bootstrap宽度响应式*/
+.container-fluid {
+}
+
+/*将该div定位在上方div的垂直中心位置，再利用transform将其向上移动自身高度的一半，达到居中的目的（relative相对于上方div定位）*/
+#card_results {
+    width: 80%;
+    height: 300px;
+    position: relative;
+    left: 10%;
+    right: 10%;
+    background-color: #F7F9FB;
+    border-radius: .375rem;
+    border: 5px solid #F7F9FB;  /* #14A098 */
+    /* x偏移量 y偏移量（负值为左上）模糊半径 扩散半径 color，inset表示内置阴影（负值相反，为右下）*/
+    box-shadow: -5px 5px 10px rgba(79, 184, 178, 0.5),
+                inset -3px 3px 10px rgba(79, 184, 178, 0.5);
+    transition: 0.35s ease-in-out;  /* 写在div中，不要写在hover中 */
+    -webkit-transition: 0.35s ease-in-out; /* safari, Chrome, and Opera*/
+    -moz-transition: 0.35s ease-in-out; /* Firefox */
+    -ms-transition: 0.35s ease-in-out; /* Internet Explorer */
+    text-align: center;  /* 屏幕缩小时文字换行仍居中 */
+}
+
+#card_results:hover {
+    border: 5px solid rgba(108, 196, 191, 0.6);  /* #14A098 */
+}
+
+#card_results h3 {
+    margin: 0; /* bootstrap 莫名添加一小段margin */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 70px;
+    color: #17252A;
+}
+
+#back_to_predict_button_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}
+
+#back_to_predict_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 200px;
+    padding: 1.3em 3em;  /* 中间的字与button边框之间的距离 */
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: MyFont, Arial, sans-serif;
+    font-weight: bold;
+    color: #14A098;
+    /*color: #009973;*/
+    background-color: #ffffff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease 0s;
+    /* all指所有属性，0.3s指过渡时间，ease指过渡的时间函数，0s 表示过渡的延迟时间，即在状态改变后等待多长时间开始过渡*/
+    outline: none;
+}
+
+
+#back_to_predict_button:hover {
+    /*background-color: #009973;*/
+    background-color: #14A098;
+    box-shadow: 0 15px 15px rgba(19, 206, 196, 0.3);
+    color: #ffffff;
+    transform: translateY(-7px);
+}
+
+#back_to_predict_button:active {
+    transform: translateY(-1px);
+}

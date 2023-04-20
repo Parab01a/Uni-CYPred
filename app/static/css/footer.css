@@ -9,16 +9,13 @@ body {
 }
 
 footer {
-    /*background-color: rgba(204, 204, 204, 0.2);*/
-    background-color: rgba(221, 221, 221, 1);
+    /*background-color: rgba(230, 230, 230, 1);*/
+    background-color: #dee2e6;  /* gray-300 */
     bottom: 0;
     left: 0;
+    right: 0;
     width: 100%;
-    height: 275px;
-    /*padding: 100px 50%;*/
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
+    height: 260px;
 }
 
 /*三张LOGO图片的大小和间距*/
@@ -53,6 +50,7 @@ footer {
 .flask_copy p {
     font-size: 15px;
     margin: 0 0 0 20px;
+    color: #17252A;
 }
 
 .school_links {
@@ -60,11 +58,54 @@ footer {
 }
 
 .school_links:link, .school_links:visited {
-    color: #009973;
+    /*color: #009973;*/
+    color: #17252A;
 }
 
 .school_links:hover, .school_links:active {
-    color: rgb(0, 96, 85);
+    /*color: rgb(0, 96, 85);*/
+    color: #14A098;
+}
+
+#back_to_top {
+    display: none;
+    position: fixed;
+    right: 5px;
+    bottom: 100px;
+    cursor: pointer;
+    transition: all .2s;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background: transparent;
+    border: 2px solid #17252A;
+    justify-content: center;
+    align-items: center;
+    /*opacity: 0;*/
+
+}
+
+#back_to_top:hover {
+    border: 2px solid #14A098;
+}
+
+#back_to_top > svg {
+    width: 30px;
+    height: 25px;
+    transition: transform .3s ease-in-out;
+    -webkit-transition: transform .3s ease-in-out;
+    -moz-transition: transform .3s ease-in-out;
+    -ms-transition: transform .3s ease-in-out;
+}
+
+#back_to_top:hover svg {
+    /*点击箭头向上滑动效果*/
+    transform: translateY(-3px);
+    color: #14A098;
+}
+
+#back_to_top:active {
+    /*点击后缩小为95%，点击效果*/
+    transform: scale(0.95);
 }
 
 @media only screen and (max-width: 1060px) {
@@ -72,5 +113,8 @@ footer {
         text-align: center;
         margin: 0 0 0 5px;
         transition: 0.5s;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
     }
 }

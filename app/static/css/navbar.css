@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: MyFont, Arial, sans-serif;
 
     /*网页元素调整*/
 
@@ -10,46 +11,60 @@
 	/*color: #fff !important;*/
 }
 
-body {
-    font-family: MyFont, Arial, sans-serif;
-    min-height: 100vh;
-}
-
 header {
     /*background-image: linear-gradient(to right, rgba(153, 204, 153, 1),
     rgba(153, 204, 153, 0.45), rgba(153, 204, 153, 1));*/
 
-    background-color: rgba(238, 238, 238, 1);
+    /*background-color: rgba(238, 238, 238, 1);*/
+    background-color: #F7F9FB;
     position: sticky;   /* !!!!! */
     top: 0;
     left: 0;
-    bottom: 0;
+    /*bottom: 0;*/
     right: 0;
     width: 100%;    /*width: 100%*/
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: 0.7s;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
     padding: 25px 10%;
     box-shadow: 0 5px 8px darkgray;
     /*border-radius: 0 0 90px 90px;*/
     z-index: 10000;
-    height: 12vh;
+    /*height: 12vh;*/
+    height: 80px;
 }
 
 header.sticky {
     padding: 10px 10%;
-    background-color: rgba(221, 221, 221, 1);
-    height: 8vh;
+    background-color: #F7F9FB;
+    /*background-color: rgba(230, 230, 230, 1);*/
+    /*background-color: rgba(221, 221, 221, 1);*/
+    /*height: 8vh;*/
+    height: 60px;
 }
 
 .logo {
     position: relative;
     font-weight: bold;
-    color: #009973;
+    color: #17252A;
     text-decoration: none;
     font-size: 32px;
     transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+}
+
+.navbar_right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*height: 60px;*/
 }
 
 .navbar {
@@ -57,6 +72,8 @@ header.sticky {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 30px;
+    /*padding: 0;*/
 }
 
 .navbar_list {
@@ -68,36 +85,36 @@ header.sticky {
     position: relative;
     margin: 0 25px;
     text-decoration: none;
-    color: #009973;
+    color: #17252A;
+    /*color: #009973;*/
     font-weight: bold;
     font-size: 18px;
     transition: 0.2s;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
     /*display: inline-block;   !* add underline 弹开效果 不稳定 *!*/
 }
 
 .navbar_button:hover, .navbar_button:active {
-    color: rgb(0, 96, 85);
+    /*color: #009973;*/
+    color: #128C85;
     padding-bottom: 6px;   /* add underline */
     border-bottom: 2px solid;   /* add underline */
 }
 
 .logo:hover, .logo:active {
-    color: rgb(0, 96, 85);
+    /*color: rgb(0, 96, 85);*/
+    /*color: #009973;*/
+    color: #128C85;
 }
 
 .highlight {
-    color: rgb(0, 96, 85);
+    /*color: #009973;*/
+    color: #128C85;
     padding-bottom: 6px;
     border-bottom: 2px solid;
 }
-
-/*header.sticky .logo, .navbar_button {*/
-/*    color: #009973;*/
-/*}*/
-
-/*header.sticky .logo:hover, .logo:active {*/
-/*    color: rgb(0, 96, 85);*/
-/*}*/
 
 /*响应式布局适用于小于750px时展现的布局*/
 /*小于750px时导航栏变为下拉菜单模式*/
@@ -114,7 +131,7 @@ label[for="nav-checkbox"] {
 
 @media only screen and (max-width: 750px) {
     header {
-        flex-wrap: wrap;
+        /*flex-wrap: wrap;*/
         justify-content: space-between;
         /*position: relative;*/
     }
@@ -126,30 +143,31 @@ label[for="nav-checkbox"] {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: rgb(173, 173, 173) 2px solid;
-        color: rgb(173, 173, 173);
+        border: #17252A 2px solid;
+        color: #17252A;
         border-radius: 10px;
     }
 
     label[for="nav-checkbox"]:hover {
-        color: #009973;
-        border: 3px #009973 solid;
+        color: #128C85;
+        border: 3px #128C85 solid;
     }
 
     #nav-checkbox:checked + label {
-        color: #009973;
-        border: 3px #009973 solid;
+        color: #128C85;
+        border: 3px #128C85 solid;
     }
 
     .navbar_right {
         display: none;
         position: absolute;
-        top: 12vh;
+        top: 80px;
+        /*top: 12vh;*/
         right: 0;
         padding: 0 10% 10px 10%;
         flex: 0 0 100%;
         width: 100%;
-        background-color: rgba(238, 238, 238, 1);
+        background-color: #F7F9FB;
         flex-direction: column;
         justify-content: initial;
         align-items: initial;
@@ -160,7 +178,7 @@ label[for="nav-checkbox"] {
         justify-content: initial;
         align-items: initial;
         width: 100%;
-
+        height: 250px;  /* 高度不够会变横向 */
     }
 
     .navbar_list {
@@ -193,18 +211,20 @@ label[for="nav-checkbox"] {
         z-index: 10000;
         box-shadow: 0 7px 5px -5px darkgray;
         transition: 0.7s;
+        -webkit-transition: 0.7s;
+        -moz-transition: 0.7s;
+        -ms-transition: 0.7s;
         /*animation: dropdown 0.45s;*/
     }
 
     header.sticky #nav-checkbox:checked ~ .navbar_right {
-        top: 8vh;
-        background-color: rgba(221, 221, 221, 1);
+        top: 60px;
+        /*top: 8vh;*/
+        background-color: #F7F9FB;
         transition: 0.7s;
+        -webkit-transition: 0.7s;
+        -moz-transition: 0.7s;
+        -ms-transition: 0.7s;
     }
-
-    /*@keyframes dropdown {*/
-    /*    from {opacity: 0}*/
-    /*    to {opacity: 1}*/
-    /*}*/
 }
 

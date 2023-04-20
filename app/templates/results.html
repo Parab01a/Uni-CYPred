@@ -1,15 +1,210 @@
 {% extends "base.html" %}
 
 {% block results %}
+<link rel="stylesheet" href="../static/css/results.css" type="text/css">
+<script>
+    //初始化popover
+    $(document).ready(function() {
+        $('[data-bs-toggle="popover"]').popover();
+    });
+    //初始化table
+    $(document).ready(function () {
+        $('#smiles_table, #file_table').DataTable({
+            "order": [[1, "asc"]],
+            "lengthChange": true,
+            "searching": true,
+            "info": true,
+            "paging": true,
+            "ordering": true,
+            "autoWidth": false,
+            "stateSave": true,
+            "deferRender": false,
+            "scrollX": true,
+            "pageLength": 10,
+            "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ],
+            "columnDefs": [
+                { "width": "5%", "targets": [0, 5, 6] },
+                { "width": "20%", "targets": 1 },
+                { "width": "35%", "targets": 1 },
+                { "width": "15%", "targets": [3, 4] },
+                { "searchable": false, "targets": [0, 2] },
+                { "orderable": false, "targets": [1, 2] },
+                { targets: 1,
+                    render: function(data) {
+                    return '<button type="button" class="btn btn_custom1 popover-btn" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="' + data + '">Show SMILES</button>';}}
+            ],
+            "drawCallback": function () {
+                $('[data-bs-toggle="popover"]').popover();
+                },
+            // "destroyCallback": function(settings) {
+            //     $('[data-toggle="popover"]').hide();
+            //     },
+            "createdRow": function(row, data) {
+            let sdf_prediction_float_2b6 = data[3];
+            let sdf_prediction_float_2c8 = data[4];
+            if (sdf_prediction_float_2b6 < 0.2) {
+                $(row).find('td:eq(3)').css('background-color', '#32ff7e');
+            } else if (sdf_prediction_float_2b6 >= 0.2 && sdf_prediction_float_2b6 < 0.5){
+                $(row).find('td:eq(3)').css('background-color', '#b2ff3d');
+            } else if (sdf_prediction_float_2b6 >= 0.5 && sdf_prediction_float_2b6 < 0.7){
+                $(row).find('td:eq(3)').css('background-color', '#fff200')
+            } else if (sdf_prediction_float_2b6 >= 0.7 && sdf_prediction_float_2b6 < 0.9){
+                $(row).find('td:eq(3)').css('background-color', '#ff9f1a')
+            } else {$(row).find('td:eq(3)').css('background-color', '#ff3838')}
+            if (sdf_prediction_float_2c8 < 0.2) {
+                $(row).find('td:eq(4)').css('background-color', '#32ff7e');
+            } else if (sdf_prediction_float_2c8 >= 0.2 && sdf_prediction_float_2c8 < 0.5){
+                $(row).find('td:eq(4)').css('background-color', '#b2ff3d');
+            } else if (sdf_prediction_float_2c8 >= 0.5 && sdf_prediction_float_2c8 < 0.7){
+                $(row).find('td:eq(4)').css('background-color', '#fff200')
+            } else if (sdf_prediction_float_2c8 >= 0.7 && sdf_prediction_float_2c8 < 0.9){
+                $(row).find('td:eq(4)').css('background-color', '#ff9f1a')
+            } else {$(row).find('td:eq(4)').css('background-color', '#ff3838')}
+            },
+        });
+        //点击popover外区域hide popover
+        $(document).on('click', function (e) {
+            if ($(e.target).data('bs-toggle') !== 'popover' && $(e.target).parents('.popover').length === 0) {
+                $('.popover-btn').each(function () {
+                    $(this).popover('hide');
+                });
+            }
+        });
+        // 换页时hide所有弹出的popover
+        $('#file_table').DataTable().on('page.dt', function() {
+            $('[data-bs-toggle="popover"]').popover('hide');
+            // console.log($('.popover').length); 检查弹出的popover的个数
+        });
+        $('#file_table').DataTable().on('draw.dt', function() {
+            $('[data-bs-toggle="popover"]').popover('hide');
+            // console.log($('.popover').length); 检查弹出的popover的个数
+        });
+    });
+</script>
 
-<div>
-    {% if plot_url %}
-    <h1>{{ prediction_str }}; {{ class_2c8 }}</h1>
-    <img src="data:image/png;base64, {{ plot_url }}" alt="">
+    {% if s %}
+    <div class="container-fluid g-0 mb-5">
+        <div class="container mb-5 g-0">
+            <h1 class="title_results text-center">-----&nbsp&nbspResults&nbsp&nbsp-----</h1>
+            <div class="row mt-5 mb-4 mx-0 pt-4 pb-4 justify-content-around custom_card1">
+                <div class="col-md-7 d-flex justify-content-center align-items-center pt-2 pb-2 custom_card2">
+                    <h6>To access the results later, you can use the following address: <a href="" class="results_url">
+                        http://lmmd.ecust.edu.cn/uni-cypred/results/91d5ac04-5e29-4393-88bd-a47daebdcf63</a></h6>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center custom_card2 mt-md-0 mt-3">
+                    <div class="row align-items-center" style="width: 100%">
+                        <div class="col-lg-7 col-md-12 col-sm-12 col-12 d-flex justify-content-center text-center">
+                            <h6 class="m-0">Download the results:</h6>
+                        </div>
+                        <div class="col-lg-5 col-md-12 col-sm-12 col-12 d-flex justify-content-center pt-md-0 pt-1">
+                            <a class="btn btn_custom1 btn-sm" href="" role="button" style="font-weight: bold">Download(.csv)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--        results table       -->
+        <div class="container g-0">
+            <table id="smiles_table" class="display hover dataTable no-footer result_table" style="width: 100%">
+                <thead>
+                <tr role="row">
+                    <th rowspan="2" colspan="1">Index</th>
+                    <th rowspan="2" colspan="1">SMILES</th>
+                    <th rowspan="2" colspan="1">2D Structure</th>
+                    <th rowspan="1" colspan="2">Inhibition probability</th>
+                    <th rowspan="1" colspan="2">Domain</th>
+                </tr>
+                <tr role="row">
+                    <th rowspan="1" colspan="1">CYP2B6</th>
+                    <th rowspan="1" colspan="1">CYP2C8</th>
+                    <th rowspan="1" colspan="1">CYP2B6</th>
+                    <th rowspan="1" colspan="1">CYP2C8</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>{{ s }}</td>
+                    <td><img src="data:image/png;base64, {{ plot_url }}" alt=""></td>
+                    <td>{{ prediction_float_2b6 }}</td>
+                    <td>{{ prediction_float_2c8 }}</td>
+                    <td>{{ AD_2b6 }}</td>
+                    <td>{{ AD_2c8 }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    {% elif data %}
+    <div class="container-fluid g-0 mb-5">
+        <div class="container mb-5 g-0">
+            <h1 class="title_results text-center">-----&nbsp&nbspResults&nbsp&nbsp-----</h1>
+            <div class="row mt-5 mb-4 mx-0 pt-4 pb-4 justify-content-around custom_card1">
+                <div class="col-md-7 d-flex justify-content-center align-items-center pt-2 pb-2 custom_card2">
+                    <h6>To access the results later, you can use the following address: <a href="" class="results_url">
+                        http://lmmd.ecust.edu.cn/uni-cypred/results/91d5ac04-5e29-4393-88bd-a47daebdcf63</a></h6>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center custom_card2 mt-md-0 mt-3">
+                    <div class="row align-items-center" style="width: 100%">
+                        <div class="col-lg-7 col-md-12 col-sm-12 col-12 d-flex justify-content-center text-center">
+                            <h6 class="m-0">Download the results:</h6>
+                        </div>
+                        <div class="col-lg-5 col-md-12 col-sm-12 col-12 d-flex justify-content-center pt-md-0 pt-1">
+                            <a class="btn btn_custom1 btn-sm" href="" role="button" style="font-weight: bold">Download(.csv)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--        results table       -->
+        <div class="container g-0">
+            <table id="file_table" class="display hover dataTable no-footer" style="width: 100%">
+                <thead>
+                <tr role="row">
+                    <th rowspan="2" colspan="1">Index</th>
+                    <th rowspan="2" colspan="1">SMILES</th>
+                    <th rowspan="2" colspan="1">2D Structure</th>
+                    <th rowspan="1" colspan="2">Inhibition probability</th>
+                    <th rowspan="1" colspan="2">Applicability domain</th>
+                </tr>
+                <tr role="row">
+                    <th rowspan="1" colspan="1">CYP2B6</th>
+                    <th rowspan="1" colspan="1">CYP2C8</th>
+                    <th rowspan="1" colspan="1">CYP2B6</th>
+                    <th rowspan="1" colspan="1">CYP2C8</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for sdf_index, sdf_smiles, sdf_img, sdf_prediction_float_2b6, sdf_prediction_float_2c8, sdf_AD_2b6, sdf_AD_2c8 in data %}
+                <tr>
+                    <td>{{ sdf_index }}</td>
+                    <td>{{ sdf_smiles }}</td>
+                    <td><img src="data:image/png;base64, {{ sdf_img }}" alt=""></td>
+                    <td>{{ sdf_prediction_float_2b6 }}</td>
+                    <td>{{ sdf_prediction_float_2c8 }}</td>
+                    <td>{{ sdf_AD_2b6 }}</td>
+                    <td>{{ sdf_AD_2c8 }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     {% else %}
-    <p>Please turn to the Predict page to input your own molecule first before you get the results!</p>
+<!--    container固定宽度，container-fluid占据整个屏幕宽度   -->
+    <div class="container-fluid mb-5 g-0">
+        <form action="{{ url_for('predict')}}" method="get" style="padding-top: 50px">
+                <div id="card_results">
+                    <h3>Sorry, to get the results, you need to submit your task on the Predict page first.</h3>
+                    <div id="back_to_predict_button_div">
+                        <button id="back_to_predict_button" type="submit">Predict</button>
+                    </div>
+                </div>
+        </form>
+    </div>
     {% endif %}
-</div>
 
 <!--checkbox 选择用户想要哪种cyp的预测-->
 
