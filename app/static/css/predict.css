@@ -173,20 +173,29 @@
     line-height: 21px;
 }
 
-/*#jsme_container {*/
-/*    position: relative;*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    padding: 50px 0 10px 0;*/
-/*    width: 500px;*/
-/*    height: 400px;*/
-/*}*/
+#draw_intro {
+    font-weight: bold;
+    color: #17252A;
+}
 
-/*#jsme {*/
-/*    width: 500px;*/
-/*    height: 400px;*/
-/*}*/
+#show_jsme {
+    width: 450px;
+    border: none;
+    outline: 1px dotted rgb(37, 37, 37);
+    outline-offset: -4px;
+    background: hsl(0deg 0% 75%);
+    box-shadow: inset -1px -1px #292929, inset 1px 1px #fff, inset -2px -2px rgb(158, 158, 158), inset 2px 2px #ffffff;
+    font-family: MyFont, Arial, sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 30px;
+    cursor: pointer;
+}
+
+#show_jsme:active {
+    box-shadow: inset -1px -1px #fff, inset 1px 1px #292929, inset -2px -2px #ffffff, inset 2px 2px rgb(158, 158, 158);
+}
 
 @media only screen and (max-width: 768px) {
     #smiles_input {

@@ -9,7 +9,7 @@
     });
     //初始化table
     $(document).ready(function () {
-        $('#smiles_table, #file_table').DataTable({
+        $('#smiles_table, #file_table, #draw_table').DataTable({
             "order": [[1, "asc"]],
             "lengthChange": true,
             "searching": true,
@@ -187,6 +187,60 @@
                     <td>{{ sdf_AD_2c8 }}</td>
                 </tr>
                 {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    {% elif draw_s %}
+    <div class="container-fluid g-0 mb-5">
+        <div class="container mb-5 g-0">
+            <h1 class="title_results text-center">-----&nbsp&nbspResults&nbsp&nbsp-----</h1>
+            <div class="row mt-5 mb-4 mx-0 pt-4 pb-4 justify-content-around custom_card1">
+                <div class="col-md-7 d-flex justify-content-center align-items-center pt-2 pb-2 custom_card2">
+                    <h6>To access the results later, you can use the following address: <a href="" class="results_url">
+                        http://lmmd.ecust.edu.cn/uni-cypred/results/91d5ac04-5e29-4393-88bd-a47daebdcf63</a></h6>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center custom_card2 mt-md-0 mt-3">
+                    <div class="row align-items-center" style="width: 100%">
+                        <div class="col-lg-7 col-md-12 col-sm-12 col-12 d-flex justify-content-center text-center">
+                            <h6 class="m-0">Download the results:</h6>
+                        </div>
+                        <div class="col-lg-5 col-md-12 col-sm-12 col-12 d-flex justify-content-center pt-md-0 pt-1">
+                            <a class="btn btn_custom1 btn-sm" href="" role="button" style="font-weight: bold">Download(.csv)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--        results table       -->
+        <div class="container g-0">
+            <table id="draw_table" class="display hover dataTable no-footer result_table" style="width: 100%">
+                <thead>
+                <tr role="row">
+                    <th rowspan="2" colspan="1">Index</th>
+                    <th rowspan="2" colspan="1">SMILES</th>
+                    <th rowspan="2" colspan="1">2D Structure</th>
+                    <th rowspan="1" colspan="2">Inhibition probability</th>
+                    <th rowspan="1" colspan="2">Domain</th>
+                </tr>
+                <tr role="row">
+                    <th rowspan="1" colspan="1">CYP2B6</th>
+                    <th rowspan="1" colspan="1">CYP2C8</th>
+                    <th rowspan="1" colspan="1">CYP2B6</th>
+                    <th rowspan="1" colspan="1">CYP2C8</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>{{ draw_s }}</td>
+                    <td><img src="data:image/png;base64, {{ draw_plot_url }}" alt=""></td>
+                    <td>{{ draw_prediction_float_2b6 }}</td>
+                    <td>{{ draw_prediction_float_2c8 }}</td>
+                    <td>{{ draw_AD_2b6 }}</td>
+                    <td>{{ draw_AD_2c8 }}</td>
+                </tr>
                 </tbody>
             </table>
         </div>

@@ -104,6 +104,7 @@ def results():
     if request.method == 'POST':
         s = request.form.get("smiles", type=str)
         file = request.files.get("file_input")
+        draw_s = request.form.get("draw_smiles", type=str)
         # file = request.files["file_input"]  # FileStorage type
         # if not is_valid_smiles(s):
         #     s = ''
@@ -111,13 +112,17 @@ def results():
         #     pass
         print(s)
         print(file)
+        # print(file.filename)
+        print(draw_s)
         # 使用s提交：s为空，file为None
-        if s == '' and file is None:
+        if s == '' and file is None and draw_s is None:
             return redirect(url_for('predict'))
         # 使用file提交：file.filename为空（file不为空file为空的FileStorage对象），s为None
-        if s is None and file.filename == '':
+        # if file.filename == '' and s is None and draw_s is None:
+        #     return redirect(url_for('predict'))
+        if draw_s == '' and s is None and file is None:
             return redirect(url_for('predict'))
-        if s or file:
+        if s or file or draw_s:
             if s:
                 # single molecule prediction
                 # 2b6
@@ -224,6 +229,40 @@ def results():
                            sdf_prediction_floatList_2c8, sdf_AD_strList_2b6, sdf_AD_strList_2c8)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 return render_template('results.html', title='Results', data=data)
+            if draw_s:
+                # 2B6
+                draw_m = Chem.MolFromSmiles(draw_s)
+                draw_fp_2b6 = MACCSkeys.GenMACCSKeys(draw_m)
+                draw_x_2b6 = rdkit_numpy_convert(draw_fp_2b6)
+                scale_2b6 = StandardScaler().fit(x_train_2b6)
+                draw_x_2b6_scaled = scale_2b6.transform(draw_x_2b6)
+                # here prediction is a 2d-array, extract the prediction value of class 1
+                draw_prediction_2b6 = np.round(model_2b6.predict_proba(draw_x_2b6_scaled)[:, 1], 3)  # columns 2
+                # convert to str
+                draw_prediction_str_2b6 = "".join(str(i) for i in draw_prediction_2b6)
+                draw_prediction_float_2b6 = float(draw_prediction_str_2b6)
+
+                # 2c8
+                featurizer = dc.feat.Mol2VecFingerprint()
+                draw_x_2c8 = featurizer.featurize(draw_s)  # type(x_2c8): numpy.ndarray; x_2c8.shape: (1, 300)
+                scale_2c8 = StandardScaler().fit(x_train_2c8)
+                draw_x_2c8_scaled = scale_2c8.transform(draw_x_2c8)
+                draw_prediction_2c8 = np.round(model_2c8.predict_proba(draw_x_2c8_scaled)[:, 1], 3)
+                draw_prediction_str_2c8 = "".join(str(i) for i in draw_prediction_2c8)
+                draw_prediction_float_2c8 = float(draw_prediction_str_2c8)
+
+                imgByteArr = io.BytesIO()  # 储存二进制文件
+                img = Draw.MolToImage(draw_m, size=(320, 180))
+                img.save(imgByteArr, format='PNG', dpi=(600, 600))
+                imgByteArr.seek(0)  # 从0位开始读取
+                draw_plot_url = base64.b64encode(imgByteArr.getvalue()).decode()  # 将二进制文件转换为base64编码的字符串
+
+                draw_AD_2b6 = application_domain_2b6(draw_x_2b6_scaled[0])
+                draw_AD_2c8 = application_domain_2c8(draw_x_2c8_scaled[0])
+
+                return render_template('results.html', title='Results', draw_s=draw_s, draw_prediction_float_2b6=draw_prediction_float_2b6,
+                                       draw_prediction_float_2c8=draw_prediction_float_2c8, draw_plot_url=draw_plot_url,
+                                       draw_AD_2b6=draw_AD_2b6, draw_AD_2c8=draw_AD_2c8)
 
 
 @app.route('/about')
