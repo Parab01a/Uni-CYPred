@@ -42,7 +42,7 @@ def my_enumerate(iterable, start=0):
 
 
 def application_domain_2b6(x_scaled):
-    DT_2b6 = 11.199
+    DT_2b6 = 19.599
     i = 0
     dis_2b6 = []
     while i < x_train_2b6_scaled_smo.shape[0]:
@@ -58,7 +58,7 @@ def application_domain_2b6(x_scaled):
 
 
 def application_domain_2c8(x_scaled):
-    DT_2c8 = 15.254
+    DT_2c8 = 15.738
     i = 0
     dis_2c8 = []
     while i < x_train_2c8_scaled.shape[0]:

@@ -7,7 +7,7 @@
     <h1 class="mb-4 text-center" id="title_index">-----&nbsp&nbspUni-CYPred&nbsp&nbsp-----</h1>
 <!--    内容嵌套在行和列中（1行2列）   -->
     <div class="row g-0 custom_card1 pt-4 pb-4 d-flex justify-content-around align-items-center" style="background-color: #F7F9FB">
-        <div class="col-lg-5 col-md-12 col-sm-12 col-12 ps-lg-3 ps-4 pe-lg-3 pe-4 pb-lg-0 pb-4" id="intro_left">
+        <div class="col-lg-5 col-md-12 col-sm-12 col-12 ps-lg-5 ps-4 pe-lg-3 pe-4 pb-lg-0 pb-4" id="intro_left">
             <div id="myCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -15,14 +15,15 @@
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
+<!--                    保持每张图片 width / height 一致-->
                     <div class="carousel-item active" data-bs-interval="3000">
-                        <img src="../static/img/demo1.png" class="d-block w-100" alt="img1">
+                        <img src="../static/img/CYP2B6_2C8.png" class="d-block w-100" alt="img1">
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
-                        <img src="../static/img/demo2.png" class="d-block w-100" alt="img2">
+                        <img src="../static/img/P450_transparent.png" class="d-block w-100" alt="img2">
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
-                        <img src="../static/img/demo3.png" class="d-block w-100" alt="img3">
+                        <img src="../static/img/P450_transparent.png" class="d-block w-100" alt="img3">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
@@ -35,16 +36,14 @@
                 </button>
             </div>
         </div>
-        <div class="col-lg-7 col-md-12 col-sm-12 col-12 d-flex flex-column align-items-center ps-lg-3 ps-4 pe-4 pt-lg-3 pt-1" id="intro_right">
+        <div class="col-lg-7 col-md-12 col-sm-12 col-12 d-flex flex-column align-items-center ps-lg-3 ps-4 pe-lg-5 pe-4 pt-lg-3 pt-1" id="intro_right">
             <h5 class="m-0" id="intro_text">
-                Cytochromes P450(CYPs) are the most important drug-metabolizing enzymes in the human body, responsible for
-                approximately 75% of clinical drug metabolism. Inhibition of CYPs in the body may result in serious drug-drug
-                interactions in clinical settings and even lead to the withdrawal of a drug from the market. Therefore,
-                the prediction of CYPs inhibition is crucial during drug development. Now most web servers that predict
-                CYPs inhibition are focused on five major CYP isozymes(CYP1A2, 2C19, 2D6, 2C9, and 3A4). However, Uni-CYPred
-                has turned its attention to CYP2B6 and 2C8, which also play important roles in clinical settings and being
-                involved in the metabolism of approximately 7% and 5% of clinical drugs, respectively. We provide a way to
-                predict CYP2B6 and 2C8 inhibitors based on machine-learning algorithms, trying to help researchers to conduct
+                Cytochrome P450 (CYP) is a widely distributed enzyme family in living organisms, that is involved in many
+                important biological transformation reactions, including drug metabolism, xenobiotic detoxification, hormone synthesis.
+                Inhibition of CYP activity can affect drug metabolism in the body, leading to serious drug-drug interactions.
+                Therefore, it is of great guiding significance to predict potential CYP inhibitors in the drug development
+                quickly and accurately. Uni-Pred is currently focused on CYP2B6 and 2C8, which are responsible for approximately
+                7.2% and 4.7% of clinical drug metabolism, respectively. Uni-Pred is dedicated to help researchers to conduct
                 reasonable and reliable compound pre-screening in the early stages of drug development.
             </h5>
             <div class="mt-4" id="go_to_predict_button_div">
@@ -57,7 +56,7 @@
     <div class="row g-0 pt-5 d-flex justify-content-around align-items-start" style="background-color: #F7F9FB">
         <div class="col-lg-8 col-md-12 col-sm-12 col-12 ps-lg-3 ps-0 pe-lg-3 pe-0" id="model_info">
             <div class="row-cols-1 g-0 pb-3"><h4 class="m-0"><i>Model Information</i></h4></div>
-            <div class="row g-0 d-flex flex-column justify-content-start"><h5 class="m-0"><i class="fas fa-info-circle" aria-hidden="true"></i><i>&nbspCYP2B6 inhibition:</i></h5>
+            <div class="row g-0 d-flex flex-column justify-content-start"><h5 class="m-0"><i class="fas fa-info-circle fa-fw" aria-hidden="true"></i><i>&nbspCYP2B6 inhibition:</i></h5>
                 <div class="col-12 align-self-start pb-1 pt-2"><h6 class="m-0"><i>Training set: 363(10-fold cross-validation and validation set(41) to adjust the hyperparameters and prevent overfitting)</i></h6></div>
                 <div class="col-12 align-self-start pb-1"><h6 class="m-0"><i>Test set: 102</i></h6></div>
                 <div class="col-12 align-self-start pb-1"><h6 class="m-0"><i>External validation set: 45</i></h6></div>
@@ -69,7 +68,7 @@
                     <h6 class="m-0"><i>Applicability Domain: Euclidean distance-based similarity method</i></h6></div>
             </div>
 
-            <div class="row g-0 d-flex flex-column justify-content-start pt-3"><h5 class="m-0"><i class="fas fa-info-circle" aria-hidden="true"></i><i>&nbspCYP2C8 inhibition:</i></h5>
+            <div class="row g-0 d-flex flex-column justify-content-start pt-3"><h5 class="m-0"><i class="fas fa-info-circle fa-fw" aria-hidden="true"></i><i>&nbspCYP2C8 inhibition:</i></h5>
                 <div class="col-12 align-self-start pb-1 pt-2"><h6 class="m-0"><i>Training set: 326(10-fold cross-validation and validation set(37) to adjust the hyperparameters and prevent overfitting)</i></h6></div>
                 <div class="col-12 align-self-start pb-1"><h6 class="m-0"><i>Test set: 91</i></h6></div>
                 <div class="col-12 align-self-start pb-1"><h6 class="m-0"><i>External validation set: 79</i></h6></div>
@@ -83,7 +82,7 @@
 
         <div class="col-lg-4 col-md-12 col-sm-12 col-12 ps-lg-3 ps-0 pe-lg-3 pe-0 pt-lg-0 pt-5" id="roadmap">
             <div class="row-cols-1 g-0 pb-3"><h4 class="m-0"><i>Roadmap for Uni-CYPred</i></h4></div>
-            <div class="row g-0 d-flex flex-column pb-2"><h6 class="m-0"><i>xxxxxxxxx</i></h6></div>
+            <div class="row g-0 d-flex flex-column pb-2"><h6 class="m-0"><i class="fas fa-battery-half fa-fw" aria-hidden="true"></i><i>&nbsp5/5/2023 - 1st Version: Input via the SMILES string, drawing a molecule by JSME or uploading an SDF file, and output within DataTables.</i></h6></div>
         </div>
     </div>
 </div>

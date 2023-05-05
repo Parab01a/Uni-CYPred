@@ -150,7 +150,7 @@ function submitForm(event) {
              <div class="tab-pane fade" id="file_tab_pane" role="tabpanel" aria-labelledby="file_tab" tabindex="0">
                 <form id="submitForm2" action="{{ url_for('results')}}" method="post" enctype="multipart/form-data" onsubmit="submitForm(event); showLoader(event)">
                     <div class="row g-0 pt-md-5 pt-4 pb-md-3 pb-0 text-center d-flex justify-content-center align-items-center">
-                        <h4 id="file_intro">Please upload an SDF-formatted file for prediction:</h4>
+                        <h4 id="file_intro">Please upload an SDF file for prediction:</h4>
                     </div>
                     <div class="row g-0 mt-4 d-flex justify-content-center align-items-center">
                         <input type="file" id="file_input" name="file_input" accept=".sdf, .txt" class="form-control" lang="en">
