@@ -58,7 +58,7 @@
 .dataTables_wrapper .dataTables_info {
     display: inline-block;
     vertical-align: middle;
-    height: 30px;
+    /*height: 30px;*/
     padding: 0;
     margin-top: 20px;
 }
@@ -66,20 +66,20 @@
 .dataTables_wrapper .dataTables_paginate {
     display: inline-block;
     vertical-align: middle;
-    height: 40px;
+    /*height: 40px;*/
     padding: 0;
     margin-top: 10px;
 }
 
-.dataTables_wrapper .dataTables_paginate .current {
-    width: 40px;
-    height: 40px;
-}
+/*.dataTables_wrapper .dataTables_paginate .current {*/
+/*    width: 40px;*/
+/*    height: 40px;*/
+/*}*/
 
-.dataTables_wrapper .dataTables_paginate .previous,
-.dataTables_wrapper .dataTables_paginate .next {
-    height: 40px;
-}
+/*.dataTables_wrapper .dataTables_paginate .previous,*/
+/*.dataTables_wrapper .dataTables_paginate .next {*/
+/*    height: 40px;*/
+/*}*/
 
 @media only screen and (max-width: 768px) {
     .custom_card2 {
@@ -87,37 +87,15 @@
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* GET请求时Results的界面 */
-
-/*最外面的框，填满body, bootstrap宽度响应式*/
-.container-fluid {
-}
 
 /*将该div定位在上方div的垂直中心位置，再利用transform将其向上移动自身高度的一半，达到居中的目的（relative相对于上方div定位）*/
 #card_results {
-    width: 80%;
+    width: 90%;
     height: 300px;
     position: relative;
-    left: 10%;
-    right: 10%;
+    left: 5%;
+    right: 5%;
     background-color: #F7F9FB;
     border-radius: .375rem;
     border: 5px solid #F7F9FB;  /* #14A098 */
@@ -142,13 +120,6 @@
     align-items: center;
     padding-top: 70px;
     color: #17252A;
-}
-
-#back_to_predict_button_div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 40px;
 }
 
 #back_to_predict_button {

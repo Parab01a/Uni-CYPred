@@ -113,7 +113,7 @@ function submitForm(event) {
         <div class="tab-content" id="tabsContent">
             <!--   tab-1   -->
             <div class="tab-pane fade show active" id="smiles_tab_pane" role="tabpanel" aria-labelledby="smiles_tab" tabindex="0">
-                <form id="submitForm1" action="{{ url_for('results') }}" method="post" onsubmit="submitForm(event); showLoader(event)">
+                <form id="submitForm1" action="{{ url_for('predict') }}" method="post" onsubmit="submitForm(event); showLoader(event)">
                     <div class="row g-0 pt-md-5 pt-4 pb-md-3 pb-0 text-center">
                         <h4 id="smiles_intro">Please input a SMILES string for prediction:</h4>
                     </div>
@@ -132,7 +132,7 @@ function submitForm(event) {
             </div>
             <!--   tab-2   -->
            <div class="tab-pane fade" id="draw_tab_pane" role="tabpanel" aria-labelledby="draw_tab" tabindex="0">
-                <form id="submitForm3" action="{{ url_for('results')}}" method="post" onsubmit="getSmiles(); submitForm(event); showLoader(event)">
+                <form id="submitForm3" action="{{ url_for('predict')}}" method="post" onsubmit="getSmiles(); submitForm(event); showLoader(event)">
                     <div class="row g-0 pt-md-5 pt-4 pb-md-3 pb-0 ps-md-0 ps-3 pe-md-0 pe-3 text-center d-flex justify-content-center align-items-center">
                         <h4 id="draw_intro">Please draw a molecule for prediction:</h4>
                     </div>
@@ -148,7 +148,7 @@ function submitForm(event) {
             </div>
             <!--   tab-3   -->
              <div class="tab-pane fade" id="file_tab_pane" role="tabpanel" aria-labelledby="file_tab" tabindex="0">
-                <form id="submitForm2" action="{{ url_for('results')}}" method="post" enctype="multipart/form-data" onsubmit="submitForm(event); showLoader(event)">
+                <form id="submitForm2" action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data" onsubmit="submitForm(event); showLoader(event)">
                     <div class="row g-0 pt-md-5 pt-4 pb-md-3 pb-0 text-center d-flex justify-content-center align-items-center">
                         <h4 id="file_intro">Please upload an SDF file for prediction:</h4>
                     </div>

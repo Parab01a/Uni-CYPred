@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block notFound %}
+<style>
+    h1 {
+        font-weight: bolder;
+        font-size: 128px;
+        line-height: 128px;  /* 解决字体baseline和ascent and descent的问题*/
+        color: #f08228;
+    }
+
+    h4 {
+        font-weight: bold;
+        color: #17252A;
+    }
+</style>
+<div class="container mb-5 g-0">
+        <form action="{{ url_for('predict')}}" method="get" style="padding-top: 50px">
+                <div class="custom_card3 text-center">
+                    <h1 class="g-0 mb-0 mt-3">404</h1>
+                    <h4 class="g-0 mb-0">Sorry, please predict again.</h4>
+                    <div class="d-flex justify-content-center align-items-center mt-4">
+                        <a href="{{ url_for('predict') }}" class="custom_button1 text-center" role="button" style="text-decoration: none">
+                            Predict</a>
+                    </div>
+                </div>
+        </form>
+</div>
+{% endblock %}

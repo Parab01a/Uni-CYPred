@@ -31,7 +31,7 @@
                 { "orderable": false, "targets": [1, 2] },
                 { targets: 1,
                     render: function(data) {
-                    return '<button type="button" class="btn btn_custom1 popover-btn" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="' + data + '">Show SMILES</button>';}}
+                    return '<button type="button" class="btn custom_button2 popover-btn" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="' + data + '">Show SMILES</button>';}}
             ],
             "drawCallback": function () {
                 $('[data-bs-toggle="popover"]').popover();
@@ -88,8 +88,10 @@
             <h1 class="title_results text-center">-----&nbsp&nbspResults&nbsp&nbsp-----</h1>
             <div class="row mt-5 mb-4 mx-0 pt-4 pb-4 justify-content-around custom_card1">
                 <div class="col-md-7 d-flex justify-content-center align-items-center pt-2 pb-2 custom_card2">
-                    <h6>To access the results later, you can use the following address: <a href="" class="results_url">
-                        http://lmmd.ecust.edu.cn/uni-cypred/results/91d5ac04-5e29-4393-88bd-a47daebdcf63</a></h6>
+                   <!-- 只要数据库中存在即可通过链接访问，被删除则显示404 -->
+                    <h6>To access the results later, you can use the following address:
+                        <a href="http://127.0.0.1:8080/results/{{ uuid_str }}?_command=s" class="results_url">
+                        http://127.0.0.1:8080/results/{{ uuid_str }}?_command=s</a></h6>
                 </div>
                 <div class="col-md-4 d-flex justify-content-center custom_card2 mt-md-0 mt-3">
                     <div class="row align-items-center" style="width: 100%">
@@ -97,7 +99,7 @@
                             <h6 class="m-0">Download the results:</h6>
                         </div>
                         <div class="col-lg-5 col-md-12 col-sm-12 col-12 d-flex justify-content-center pt-md-0 pt-1">
-                            <a class="btn btn_custom1 btn-sm" href="" role="button" style="font-weight: bold">Download(.csv)</a>
+                            <a class="btn custom_button2 btn-sm" href="{{ url_for('download_csv', table_name='s_prediction_results', uuid_str=uuid_str) }}" role="button" style="font-weight: bold">Download as CSV</a>
                         </div>
                     </div>
                 </div>
@@ -112,7 +114,7 @@
                     <th rowspan="2" colspan="1">SMILES</th>
                     <th rowspan="2" colspan="1">2D Structure</th>
                     <th rowspan="1" colspan="2">Inhibition probability</th>
-                    <th rowspan="1" colspan="2">Domain</th>
+                    <th rowspan="1" colspan="2">Applicability domain</th>
                 </tr>
                 <tr role="row">
                     <th rowspan="1" colspan="1">CYP2B6</th>
@@ -126,8 +128,8 @@
                     <td>0</td>
                     <td>{{ s }}</td>
                     <td><img src="data:image/png;base64, {{ plot_url }}" alt=""></td>
-                    <td>{{ prediction_float_2b6 }}</td>
-                    <td>{{ prediction_float_2c8 }}</td>
+                    <td>{{ prediction_str_2b6 }}</td>
+                    <td>{{ prediction_str_2c8 }}</td>
                     <td>{{ AD_2b6 }}</td>
                     <td>{{ AD_2c8 }}</td>
                 </tr>
@@ -142,8 +144,9 @@
             <h1 class="title_results text-center">-----&nbsp&nbspResults&nbsp&nbsp-----</h1>
             <div class="row mt-5 mb-4 mx-0 pt-4 pb-4 justify-content-around custom_card1">
                 <div class="col-md-7 d-flex justify-content-center align-items-center pt-2 pb-2 custom_card2">
-                    <h6>To access the results later, you can use the following address: <a href="" class="results_url">
-                        http://lmmd.ecust.edu.cn/uni-cypred/results/91d5ac04-5e29-4393-88bd-a47daebdcf63</a></h6>
+                    <h6>To access the results later, you can use the following address:
+                        <a href="http://127.0.0.1:8080/results/{{ uuid_str }}?_command=f" class="results_url">
+                        http://127.0.0.1:8080/results/{{ uuid_str }}?_command=f</a></h6>
                 </div>
                 <div class="col-md-4 d-flex justify-content-center custom_card2 mt-md-0 mt-3">
                     <div class="row align-items-center" style="width: 100%">
@@ -151,7 +154,7 @@
                             <h6 class="m-0">Download the results:</h6>
                         </div>
                         <div class="col-lg-5 col-md-12 col-sm-12 col-12 d-flex justify-content-center pt-md-0 pt-1">
-                            <a class="btn btn_custom1 btn-sm" href="" role="button" style="font-weight: bold">Download(.csv)</a>
+                            <a class="btn custom_button2 btn-sm" href="{{ url_for('download_csv', table_name='sdf_prediction_results', uuid_str=uuid_str) }}" role="button" style="font-weight: bold">Download as CSV</a>
                         </div>
                     </div>
                 </div>
@@ -176,13 +179,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for sdf_index, sdf_smiles, sdf_img, sdf_prediction_float_2b6, sdf_prediction_float_2c8, sdf_AD_2b6, sdf_AD_2c8 in data %}
+                {% for sdf_index, sdf_smiles, sdf_img, sdf_prediction_str_2b6, sdf_prediction_str_2c8, sdf_AD_2b6, sdf_AD_2c8 in data %}
                 <tr>
                     <td>{{ sdf_index }}</td>
                     <td>{{ sdf_smiles }}</td>
                     <td><img src="data:image/png;base64, {{ sdf_img }}" alt=""></td>
-                    <td>{{ sdf_prediction_float_2b6 }}</td>
-                    <td>{{ sdf_prediction_float_2c8 }}</td>
+                    <td>{{ sdf_prediction_str_2b6 }}</td>
+                    <td>{{ sdf_prediction_str_2c8 }}</td>
                     <td>{{ sdf_AD_2b6 }}</td>
                     <td>{{ sdf_AD_2c8 }}</td>
                 </tr>
@@ -198,8 +201,9 @@
             <h1 class="title_results text-center">-----&nbsp&nbspResults&nbsp&nbsp-----</h1>
             <div class="row mt-5 mb-4 mx-0 pt-4 pb-4 justify-content-around custom_card1">
                 <div class="col-md-7 d-flex justify-content-center align-items-center pt-2 pb-2 custom_card2">
-                    <h6>To access the results later, you can use the following address: <a href="" class="results_url">
-                        http://lmmd.ecust.edu.cn/uni-cypred/results/91d5ac04-5e29-4393-88bd-a47daebdcf63</a></h6>
+                    <h6>To access the results later, you can use the following address:
+                        <a href="http://127.0.0.1:8080/results/{{ uuid_str }}?_command=d" class="results_url">
+                        http://127.0.0.1:8080/results/{{ uuid_str }}?_command=d</a></h6>
                 </div>
                 <div class="col-md-4 d-flex justify-content-center custom_card2 mt-md-0 mt-3">
                     <div class="row align-items-center" style="width: 100%">
@@ -207,7 +211,7 @@
                             <h6 class="m-0">Download the results:</h6>
                         </div>
                         <div class="col-lg-5 col-md-12 col-sm-12 col-12 d-flex justify-content-center pt-md-0 pt-1">
-                            <a class="btn btn_custom1 btn-sm" href="" role="button" style="font-weight: bold">Download(.csv)</a>
+                            <a class="btn custom_button2 btn-sm" href="{{ url_for('download_csv', table_name='draw_prediction_results', uuid_str=uuid_str) }}" role="button" style="font-weight: bold">Download as CSV</a>
                         </div>
                     </div>
                 </div>
@@ -222,7 +226,7 @@
                     <th rowspan="2" colspan="1">SMILES</th>
                     <th rowspan="2" colspan="1">2D Structure</th>
                     <th rowspan="1" colspan="2">Inhibition probability</th>
-                    <th rowspan="1" colspan="2">Domain</th>
+                    <th rowspan="1" colspan="2">Applicability domain</th>
                 </tr>
                 <tr role="row">
                     <th rowspan="1" colspan="1">CYP2B6</th>
@@ -236,8 +240,8 @@
                     <td>0</td>
                     <td>{{ draw_s }}</td>
                     <td><img src="data:image/png;base64, {{ draw_plot_url }}" alt=""></td>
-                    <td>{{ draw_prediction_float_2b6 }}</td>
-                    <td>{{ draw_prediction_float_2c8 }}</td>
+                    <td>{{ draw_prediction_str_2b6 }}</td>
+                    <td>{{ draw_prediction_str_2c8 }}</td>
                     <td>{{ draw_AD_2b6 }}</td>
                     <td>{{ draw_AD_2c8 }}</td>
                 </tr>
@@ -248,11 +252,11 @@
 
     {% else %}
 <!--    container固定宽度，container-fluid占据整个屏幕宽度   -->
-    <div class="container-fluid mb-5 g-0">
+    <div class="container mb-5 g-0">
         <form action="{{ url_for('predict')}}" method="get" style="padding-top: 50px">
                 <div id="card_results">
-                    <h3>Sorry, to get the results, you need to submit your task on the Predict page first.</h3>
-                    <div id="back_to_predict_button_div">
+                    <h3 style="font-weight: bold">Sorry, to get the results, you need to submit your task on the Predict page first.</h3>
+                    <div class="d-flex justify-content-center align-items-center mt-md-5 mt-4">
                         <button id="back_to_predict_button" type="submit">Predict</button>
                     </div>
                 </div>

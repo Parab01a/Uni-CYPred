@@ -1,0 +1,14 @@
+<!--{% extends "base.html" %}-->
+<!--{% block notFound %}-->
+<!--<div class="container mb-5 g-0">-->
+<!--        <form action="{{ url_for('predict')}}" method="get" style="padding-top: 50px">-->
+<!--                <div class="custom_card3">-->
+<!--                    <h3><b style="color: #f08228">404 Not Found:</b>&nbspSorry, please predict again.</h3>-->
+<!--                    <div class="d-flex justify-content-center align-items-center pt-md-5 pt-4">-->
+<!--                        <a href="{{ url_for('predict') }}" class="custom_button1 text-center" role="button" style="text-decoration: none">-->
+<!--                            Predict</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--        </form>-->
+<!--</div>-->
+<!--{% endblock %}-->

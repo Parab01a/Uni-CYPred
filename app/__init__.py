@@ -2,7 +2,7 @@
 from flask import Flask
 from config import Config
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 app.config.from_object(Config)
 app.config['UPLOAD_FOLDER'] = './app/static/upload'  # the program run from PredCyp.py
